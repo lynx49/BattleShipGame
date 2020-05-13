@@ -34,8 +34,29 @@
             this.quitGameButton = new System.Windows.Forms.Button();
             this.startGameButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.informationButton = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.customizeShipsPanel = new System.Windows.Forms.Panel();
+            this.mainGamePanel = new System.Windows.Forms.Panel();
+            this.helpButton = new System.Windows.Forms.Button();
+            this.placementButton = new System.Windows.Forms.Button();
+            this.userShipsLeftCountLabel = new System.Windows.Forms.Label();
+            this.userShipsLeftLabel = new System.Windows.Forms.Label();
+            this.roundCountLabel = new System.Windows.Forms.Label();
+            this.surrenderButton = new System.Windows.Forms.Button();
+            this.gamePanel3 = new System.Windows.Forms.Panel();
+            this.uBattleFieldLabel = new System.Windows.Forms.Label();
+            this.roundLabel = new System.Windows.Forms.Label();
+            this.gamePanel2 = new System.Windows.Forms.Panel();
+            this.eBattleFieldLabel = new System.Windows.Forms.Label();
+            this.gamePanel = new System.Windows.Forms.Panel();
+            this.enemyShipsLeftCountLabel = new System.Windows.Forms.Label();
+            this.enemyShipsLeftLabel = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.yCoordTextBox = new System.Windows.Forms.TextBox();
+            this.attackButton = new System.Windows.Forms.Button();
+            this.xCoordTextBox = new System.Windows.Forms.TextBox();
             this.uForeColorBox = new System.Windows.Forms.Label();
             this.eForeColorBox = new System.Windows.Forms.Label();
             this.uChangeCharButton = new System.Windows.Forms.Button();
@@ -60,37 +81,29 @@
             this.rButtonEnglish = new System.Windows.Forms.RadioButton();
             this.yLanguageButton = new System.Windows.Forms.Button();
             this.languageLabel = new System.Windows.Forms.Label();
-            this.gamePanel = new System.Windows.Forms.Panel();
-            this.enemyShipsLeftCountLabel = new System.Windows.Forms.Label();
-            this.enemyShipsLeftLabel = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.yCoordTextBox = new System.Windows.Forms.TextBox();
-            this.attackButton = new System.Windows.Forms.Button();
-            this.xCoordTextBox = new System.Windows.Forms.TextBox();
-            this.gamePanel2 = new System.Windows.Forms.Panel();
-            this.eBattleFieldLabel = new System.Windows.Forms.Label();
-            this.roundCountLabel = new System.Windows.Forms.Label();
-            this.roundLabel = new System.Windows.Forms.Label();
-            this.mainGamePanel = new System.Windows.Forms.Panel();
-            this.helpButton = new System.Windows.Forms.Button();
-            this.placementButton = new System.Windows.Forms.Button();
-            this.userShipsLeftCountLabel = new System.Windows.Forms.Label();
-            this.userShipsLeftLabel = new System.Windows.Forms.Label();
-            this.surrenderButton = new System.Windows.Forms.Button();
-            this.gamePanel3 = new System.Windows.Forms.Panel();
-            this.uBattleFieldLabel = new System.Windows.Forms.Label();
             this.eForeColorDialog = new System.Windows.Forms.ColorDialog();
             this.uForeColorDialog = new System.Windows.Forms.ColorDialog();
-            this.informationButton = new System.Windows.Forms.Button();
+            this.sPlayerButton = new System.Windows.Forms.Button();
+            this.mPlayerButton = new System.Windows.Forms.Button();
+            this.playersPanel = new System.Windows.Forms.Panel();
+            this.ipPanel = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.mPCreateButton = new System.Windows.Forms.Button();
+            this.mPJoinButton = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.IPBox = new System.Windows.Forms.TextBox();
+            this.PortBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.customizeShipsPanel.SuspendLayout();
-            this.settingsPanel.SuspendLayout();
-            this.gamePanel.SuspendLayout();
-            this.gamePanel2.SuspendLayout();
             this.mainGamePanel.SuspendLayout();
             this.gamePanel3.SuspendLayout();
+            this.gamePanel2.SuspendLayout();
+            this.gamePanel.SuspendLayout();
+            this.settingsPanel.SuspendLayout();
+            this.playersPanel.SuspendLayout();
+            this.ipPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // customizeShipsButton
@@ -124,12 +137,19 @@
             // tableLayoutPanel1
             // 
             resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
-            this.tableLayoutPanel1.Controls.Add(this.informationButton, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.startGameButton, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.informationButton, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.quitGameButton, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.settingsButton, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.customizeShipsButton, 0, 1);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            // 
+            // informationButton
+            // 
+            resources.ApplyResources(this.informationButton, "informationButton");
+            this.informationButton.Name = "informationButton";
+            this.informationButton.UseVisualStyleBackColor = true;
+            this.informationButton.Click += new System.EventHandler(this.informationButton_Click);
             // 
             // pictureBox1
             // 
@@ -157,6 +177,141 @@
             this.customizeShipsPanel.Controls.Add(this.csHomeButton);
             resources.ApplyResources(this.customizeShipsPanel, "customizeShipsPanel");
             this.customizeShipsPanel.Name = "customizeShipsPanel";
+            // 
+            // mainGamePanel
+            // 
+            this.mainGamePanel.Controls.Add(this.helpButton);
+            this.mainGamePanel.Controls.Add(this.placementButton);
+            this.mainGamePanel.Controls.Add(this.userShipsLeftCountLabel);
+            this.mainGamePanel.Controls.Add(this.userShipsLeftLabel);
+            this.mainGamePanel.Controls.Add(this.roundCountLabel);
+            this.mainGamePanel.Controls.Add(this.surrenderButton);
+            this.mainGamePanel.Controls.Add(this.gamePanel3);
+            this.mainGamePanel.Controls.Add(this.roundLabel);
+            this.mainGamePanel.Controls.Add(this.gamePanel2);
+            this.mainGamePanel.Controls.Add(this.gamePanel);
+            resources.ApplyResources(this.mainGamePanel, "mainGamePanel");
+            this.mainGamePanel.Name = "mainGamePanel";
+            // 
+            // helpButton
+            // 
+            resources.ApplyResources(this.helpButton, "helpButton");
+            this.helpButton.Name = "helpButton";
+            this.helpButton.UseVisualStyleBackColor = true;
+            this.helpButton.Click += new System.EventHandler(this.helpButton_Click);
+            // 
+            // placementButton
+            // 
+            resources.ApplyResources(this.placementButton, "placementButton");
+            this.placementButton.Name = "placementButton";
+            this.placementButton.UseVisualStyleBackColor = true;
+            this.placementButton.Click += new System.EventHandler(this.placementButton_Click);
+            // 
+            // userShipsLeftCountLabel
+            // 
+            resources.ApplyResources(this.userShipsLeftCountLabel, "userShipsLeftCountLabel");
+            this.userShipsLeftCountLabel.BackColor = System.Drawing.Color.Gainsboro;
+            this.userShipsLeftCountLabel.Name = "userShipsLeftCountLabel";
+            // 
+            // userShipsLeftLabel
+            // 
+            resources.ApplyResources(this.userShipsLeftLabel, "userShipsLeftLabel");
+            this.userShipsLeftLabel.BackColor = System.Drawing.Color.Gainsboro;
+            this.userShipsLeftLabel.Name = "userShipsLeftLabel";
+            // 
+            // roundCountLabel
+            // 
+            resources.ApplyResources(this.roundCountLabel, "roundCountLabel");
+            this.roundCountLabel.BackColor = System.Drawing.Color.Gainsboro;
+            this.roundCountLabel.Name = "roundCountLabel";
+            // 
+            // surrenderButton
+            // 
+            resources.ApplyResources(this.surrenderButton, "surrenderButton");
+            this.surrenderButton.Name = "surrenderButton";
+            this.surrenderButton.UseVisualStyleBackColor = true;
+            this.surrenderButton.Click += new System.EventHandler(this.surrenderButton_Click);
+            // 
+            // gamePanel3
+            // 
+            this.gamePanel3.Controls.Add(this.uBattleFieldLabel);
+            resources.ApplyResources(this.gamePanel3, "gamePanel3");
+            this.gamePanel3.Name = "gamePanel3";
+            // 
+            // uBattleFieldLabel
+            // 
+            resources.ApplyResources(this.uBattleFieldLabel, "uBattleFieldLabel");
+            this.uBattleFieldLabel.BackColor = System.Drawing.Color.Gainsboro;
+            this.uBattleFieldLabel.Name = "uBattleFieldLabel";
+            // 
+            // roundLabel
+            // 
+            resources.ApplyResources(this.roundLabel, "roundLabel");
+            this.roundLabel.BackColor = System.Drawing.Color.Gainsboro;
+            this.roundLabel.Name = "roundLabel";
+            // 
+            // gamePanel2
+            // 
+            this.gamePanel2.Controls.Add(this.eBattleFieldLabel);
+            resources.ApplyResources(this.gamePanel2, "gamePanel2");
+            this.gamePanel2.Name = "gamePanel2";
+            // 
+            // eBattleFieldLabel
+            // 
+            resources.ApplyResources(this.eBattleFieldLabel, "eBattleFieldLabel");
+            this.eBattleFieldLabel.BackColor = System.Drawing.Color.Gainsboro;
+            this.eBattleFieldLabel.Name = "eBattleFieldLabel";
+            // 
+            // gamePanel
+            // 
+            this.gamePanel.Controls.Add(this.enemyShipsLeftCountLabel);
+            this.gamePanel.Controls.Add(this.enemyShipsLeftLabel);
+            this.gamePanel.Controls.Add(this.label2);
+            this.gamePanel.Controls.Add(this.label1);
+            this.gamePanel.Controls.Add(this.yCoordTextBox);
+            this.gamePanel.Controls.Add(this.attackButton);
+            this.gamePanel.Controls.Add(this.xCoordTextBox);
+            resources.ApplyResources(this.gamePanel, "gamePanel");
+            this.gamePanel.Name = "gamePanel";
+            // 
+            // enemyShipsLeftCountLabel
+            // 
+            resources.ApplyResources(this.enemyShipsLeftCountLabel, "enemyShipsLeftCountLabel");
+            this.enemyShipsLeftCountLabel.BackColor = System.Drawing.Color.Gainsboro;
+            this.enemyShipsLeftCountLabel.Name = "enemyShipsLeftCountLabel";
+            // 
+            // enemyShipsLeftLabel
+            // 
+            resources.ApplyResources(this.enemyShipsLeftLabel, "enemyShipsLeftLabel");
+            this.enemyShipsLeftLabel.BackColor = System.Drawing.Color.Gainsboro;
+            this.enemyShipsLeftLabel.Name = "enemyShipsLeftLabel";
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // yCoordTextBox
+            // 
+            resources.ApplyResources(this.yCoordTextBox, "yCoordTextBox");
+            this.yCoordTextBox.Name = "yCoordTextBox";
+            // 
+            // attackButton
+            // 
+            resources.ApplyResources(this.attackButton, "attackButton");
+            this.attackButton.Name = "attackButton";
+            this.attackButton.UseVisualStyleBackColor = true;
+            this.attackButton.Click += new System.EventHandler(this.attackButton_Click);
+            // 
+            // xCoordTextBox
+            // 
+            resources.ApplyResources(this.xCoordTextBox, "xCoordTextBox");
+            this.xCoordTextBox.Name = "xCoordTextBox";
             // 
             // uForeColorBox
             // 
@@ -323,147 +478,81 @@
             this.languageLabel.BackColor = System.Drawing.Color.Gainsboro;
             this.languageLabel.Name = "languageLabel";
             // 
-            // gamePanel
+            // sPlayerButton
             // 
-            this.gamePanel.Controls.Add(this.enemyShipsLeftCountLabel);
-            this.gamePanel.Controls.Add(this.enemyShipsLeftLabel);
-            this.gamePanel.Controls.Add(this.label2);
-            this.gamePanel.Controls.Add(this.label1);
-            this.gamePanel.Controls.Add(this.yCoordTextBox);
-            this.gamePanel.Controls.Add(this.attackButton);
-            this.gamePanel.Controls.Add(this.xCoordTextBox);
-            resources.ApplyResources(this.gamePanel, "gamePanel");
-            this.gamePanel.Name = "gamePanel";
+            resources.ApplyResources(this.sPlayerButton, "sPlayerButton");
+            this.sPlayerButton.Name = "sPlayerButton";
+            this.sPlayerButton.UseVisualStyleBackColor = true;
+            this.sPlayerButton.Click += new System.EventHandler(this.sPlayerButton_Click);
             // 
-            // enemyShipsLeftCountLabel
+            // mPlayerButton
             // 
-            resources.ApplyResources(this.enemyShipsLeftCountLabel, "enemyShipsLeftCountLabel");
-            this.enemyShipsLeftCountLabel.BackColor = System.Drawing.Color.Gainsboro;
-            this.enemyShipsLeftCountLabel.Name = "enemyShipsLeftCountLabel";
+            resources.ApplyResources(this.mPlayerButton, "mPlayerButton");
+            this.mPlayerButton.Name = "mPlayerButton";
+            this.mPlayerButton.UseVisualStyleBackColor = true;
+            this.mPlayerButton.Click += new System.EventHandler(this.mPlayerButton_Click);
             // 
-            // enemyShipsLeftLabel
+            // playersPanel
             // 
-            resources.ApplyResources(this.enemyShipsLeftLabel, "enemyShipsLeftLabel");
-            this.enemyShipsLeftLabel.BackColor = System.Drawing.Color.Gainsboro;
-            this.enemyShipsLeftLabel.Name = "enemyShipsLeftLabel";
+            this.playersPanel.Controls.Add(this.ipPanel);
+            this.playersPanel.Controls.Add(this.sPlayerButton);
+            this.playersPanel.Controls.Add(this.mPlayerButton);
+            resources.ApplyResources(this.playersPanel, "playersPanel");
+            this.playersPanel.Name = "playersPanel";
             // 
-            // label2
+            // ipPanel
             // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
+            this.ipPanel.Controls.Add(this.label5);
+            this.ipPanel.Controls.Add(this.mPCreateButton);
+            this.ipPanel.Controls.Add(this.mPJoinButton);
+            this.ipPanel.Controls.Add(this.label4);
+            this.ipPanel.Controls.Add(this.label3);
+            this.ipPanel.Controls.Add(this.IPBox);
+            this.ipPanel.Controls.Add(this.PortBox);
+            resources.ApplyResources(this.ipPanel, "ipPanel");
+            this.ipPanel.Name = "ipPanel";
             // 
-            // label1
+            // label5
             // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.BackColor = System.Drawing.Color.Gainsboro;
+            this.label5.Name = "label5";
             // 
-            // yCoordTextBox
+            // mPCreateButton
             // 
-            resources.ApplyResources(this.yCoordTextBox, "yCoordTextBox");
-            this.yCoordTextBox.Name = "yCoordTextBox";
+            resources.ApplyResources(this.mPCreateButton, "mPCreateButton");
+            this.mPCreateButton.Name = "mPCreateButton";
+            this.mPCreateButton.UseVisualStyleBackColor = true;
+            this.mPCreateButton.Click += new System.EventHandler(this.mPCreateButton_Click);
             // 
-            // attackButton
+            // mPJoinButton
             // 
-            resources.ApplyResources(this.attackButton, "attackButton");
-            this.attackButton.Name = "attackButton";
-            this.attackButton.UseVisualStyleBackColor = true;
-            this.attackButton.Click += new System.EventHandler(this.attackButton_Click);
+            resources.ApplyResources(this.mPJoinButton, "mPJoinButton");
+            this.mPJoinButton.Name = "mPJoinButton";
+            this.mPJoinButton.UseVisualStyleBackColor = true;
+            this.mPJoinButton.Click += new System.EventHandler(this.mPJoinButton_Click);
             // 
-            // xCoordTextBox
+            // label4
             // 
-            resources.ApplyResources(this.xCoordTextBox, "xCoordTextBox");
-            this.xCoordTextBox.Name = "xCoordTextBox";
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.BackColor = System.Drawing.Color.Gainsboro;
+            this.label4.Name = "label4";
             // 
-            // gamePanel2
+            // label3
             // 
-            this.gamePanel2.Controls.Add(this.eBattleFieldLabel);
-            resources.ApplyResources(this.gamePanel2, "gamePanel2");
-            this.gamePanel2.Name = "gamePanel2";
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.BackColor = System.Drawing.Color.Gainsboro;
+            this.label3.Name = "label3";
             // 
-            // eBattleFieldLabel
+            // IPBox
             // 
-            resources.ApplyResources(this.eBattleFieldLabel, "eBattleFieldLabel");
-            this.eBattleFieldLabel.BackColor = System.Drawing.Color.Gainsboro;
-            this.eBattleFieldLabel.Name = "eBattleFieldLabel";
+            resources.ApplyResources(this.IPBox, "IPBox");
+            this.IPBox.Name = "IPBox";
             // 
-            // roundCountLabel
+            // PortBox
             // 
-            resources.ApplyResources(this.roundCountLabel, "roundCountLabel");
-            this.roundCountLabel.BackColor = System.Drawing.Color.Gainsboro;
-            this.roundCountLabel.Name = "roundCountLabel";
-            // 
-            // roundLabel
-            // 
-            resources.ApplyResources(this.roundLabel, "roundLabel");
-            this.roundLabel.BackColor = System.Drawing.Color.Gainsboro;
-            this.roundLabel.Name = "roundLabel";
-            // 
-            // mainGamePanel
-            // 
-            this.mainGamePanel.Controls.Add(this.helpButton);
-            this.mainGamePanel.Controls.Add(this.placementButton);
-            this.mainGamePanel.Controls.Add(this.userShipsLeftCountLabel);
-            this.mainGamePanel.Controls.Add(this.userShipsLeftLabel);
-            this.mainGamePanel.Controls.Add(this.roundCountLabel);
-            this.mainGamePanel.Controls.Add(this.surrenderButton);
-            this.mainGamePanel.Controls.Add(this.gamePanel3);
-            this.mainGamePanel.Controls.Add(this.roundLabel);
-            this.mainGamePanel.Controls.Add(this.gamePanel2);
-            this.mainGamePanel.Controls.Add(this.gamePanel);
-            resources.ApplyResources(this.mainGamePanel, "mainGamePanel");
-            this.mainGamePanel.Name = "mainGamePanel";
-            // 
-            // helpButton
-            // 
-            resources.ApplyResources(this.helpButton, "helpButton");
-            this.helpButton.Name = "helpButton";
-            this.helpButton.UseVisualStyleBackColor = true;
-            this.helpButton.Click += new System.EventHandler(this.helpButton_Click);
-            // 
-            // placementButton
-            // 
-            resources.ApplyResources(this.placementButton, "placementButton");
-            this.placementButton.Name = "placementButton";
-            this.placementButton.UseVisualStyleBackColor = true;
-            this.placementButton.Click += new System.EventHandler(this.placementButton_Click);
-            // 
-            // userShipsLeftCountLabel
-            // 
-            resources.ApplyResources(this.userShipsLeftCountLabel, "userShipsLeftCountLabel");
-            this.userShipsLeftCountLabel.BackColor = System.Drawing.Color.Gainsboro;
-            this.userShipsLeftCountLabel.Name = "userShipsLeftCountLabel";
-            // 
-            // userShipsLeftLabel
-            // 
-            resources.ApplyResources(this.userShipsLeftLabel, "userShipsLeftLabel");
-            this.userShipsLeftLabel.BackColor = System.Drawing.Color.Gainsboro;
-            this.userShipsLeftLabel.Name = "userShipsLeftLabel";
-            // 
-            // surrenderButton
-            // 
-            resources.ApplyResources(this.surrenderButton, "surrenderButton");
-            this.surrenderButton.Name = "surrenderButton";
-            this.surrenderButton.UseVisualStyleBackColor = true;
-            this.surrenderButton.Click += new System.EventHandler(this.surrenderButton_Click);
-            // 
-            // gamePanel3
-            // 
-            this.gamePanel3.Controls.Add(this.uBattleFieldLabel);
-            resources.ApplyResources(this.gamePanel3, "gamePanel3");
-            this.gamePanel3.Name = "gamePanel3";
-            // 
-            // uBattleFieldLabel
-            // 
-            resources.ApplyResources(this.uBattleFieldLabel, "uBattleFieldLabel");
-            this.uBattleFieldLabel.BackColor = System.Drawing.Color.Gainsboro;
-            this.uBattleFieldLabel.Name = "uBattleFieldLabel";
-            // 
-            // informationButton
-            // 
-            resources.ApplyResources(this.informationButton, "informationButton");
-            this.informationButton.Name = "informationButton";
-            this.informationButton.UseVisualStyleBackColor = true;
-            this.informationButton.Click += new System.EventHandler(this.informationButton_Click);
+            resources.ApplyResources(this.PortBox, "PortBox");
+            this.PortBox.Name = "PortBox";
             // 
             // Form1
             // 
@@ -471,6 +560,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CadetBlue;
             this.Controls.Add(this.mainGamePanel);
+            this.Controls.Add(this.playersPanel);
             this.Controls.Add(this.settingsPanel);
             this.Controls.Add(this.customizeShipsPanel);
             this.Controls.Add(this.pictureBox1);
@@ -482,16 +572,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.customizeShipsPanel.ResumeLayout(false);
             this.customizeShipsPanel.PerformLayout();
-            this.settingsPanel.ResumeLayout(false);
-            this.settingsPanel.PerformLayout();
-            this.gamePanel.ResumeLayout(false);
-            this.gamePanel.PerformLayout();
-            this.gamePanel2.ResumeLayout(false);
-            this.gamePanel2.PerformLayout();
             this.mainGamePanel.ResumeLayout(false);
             this.mainGamePanel.PerformLayout();
             this.gamePanel3.ResumeLayout(false);
             this.gamePanel3.PerformLayout();
+            this.gamePanel2.ResumeLayout(false);
+            this.gamePanel2.PerformLayout();
+            this.gamePanel.ResumeLayout(false);
+            this.gamePanel.PerformLayout();
+            this.settingsPanel.ResumeLayout(false);
+            this.settingsPanel.PerformLayout();
+            this.playersPanel.ResumeLayout(false);
+            this.ipPanel.ResumeLayout(false);
+            this.ipPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -551,6 +644,17 @@
         private System.Windows.Forms.Label eForeColorBox;
         private System.Windows.Forms.Button helpButton;
         private System.Windows.Forms.Button informationButton;
+        private System.Windows.Forms.Button sPlayerButton;
+        private System.Windows.Forms.Button mPlayerButton;
+        private System.Windows.Forms.Panel playersPanel;
+        private System.Windows.Forms.Panel ipPanel;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button mPCreateButton;
+        private System.Windows.Forms.Button mPJoinButton;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox IPBox;
+        private System.Windows.Forms.TextBox PortBox;
     }
 }
 

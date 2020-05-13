@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Net;
+using System.Net.Sockets;
 
 namespace BattleShipGame
 {
@@ -21,22 +23,23 @@ namespace BattleShipGame
         //other necessary variables
         int roundCounter = 1;
         Boolean assumeEmpty;
-        int randomX;
-        int randomY;
+        int randomX, randomY;
         int xOrYShip;
         int shipCounter;
         int shipSize;
         Random random = new Random();
         Boolean gameBoxesNotCreated = true;
-        int enemyShipsLeft;
-        int userShipsLeft;
+        int enemyShipsLeft, userShipsLeft;
         Boolean enemyBoxClick = false;
-        int attackValueX;
-        int attackValueY;
+        int attackValueX, attackValueY;
         Boolean[] languageList = { true, false, false, false };
         char[] selectedSprites = { ' ', 'X', '€', '¤', 'Ü', '@' };
-        int enemyShipColor = 0;
-        int userShipColor = 0;
+        int enemyShipColor, userShipColor = 0;
+        //1.single player, 2.host, 3.client
+        int userType;
+
+        TcpListener listener;
+        TcpClient client;
 
         public Form1()
         {
@@ -383,10 +386,17 @@ namespace BattleShipGame
             }
         }
 
-        //starts the battleship game, hides unnecessary panels and shows the game panel + starts the game
+        
         private void startGameButton_Click(object sender, EventArgs e)
         {
+            playersPanel.Visible = true;
+        }
+        //starts the battleship game (singleplayer), hides unnecessary panels and shows the game panel + starts the game
+        private void sPlayerButton_Click(object sender, EventArgs e)
+        {
             startGameButton.Enabled = false;
+            playersPanel.Visible = false;
+            ipPanel.Visible = false;
             customizeShipsPanel.Visible = false;
             settingsPanel.Visible = false;
             mainGamePanel.Visible = true;
@@ -405,8 +415,92 @@ namespace BattleShipGame
                 translateEnemyBoxes();
             }
 
+            userType = 1;
+
             placementButton.Enabled = true;
         }
+
+        private void mPlayerButton_Click(object sender, EventArgs e)
+        {
+            ipPanel.Visible = true;
+        }
+
+        private void mPCreateButton_Click(object sender, EventArgs e)
+        {
+            //KONTROLLERA OM ÖVER 20000, BARA SIFFROR
+            listener = new TcpListener(IPAddress.Any, int.Parse(PortBox.Text));
+            listener.Start();
+
+            client = listener.AcceptTcpClient();
+
+            if (client.Connected)
+            {
+                //VÄNTAR PÅ SERVERSKAPARE
+                startGameButton.Enabled = false;
+                playersPanel.Visible = false;
+                ipPanel.Visible = false;
+                customizeShipsPanel.Visible = false;
+                settingsPanel.Visible = false;
+                mainGamePanel.Visible = true;
+
+                //checks if a gameboard has been created earlier
+                if (gameBoxesNotCreated)
+                {
+                    createEnemyGameBoxes();
+                    createUserGameBoxes();
+                    gameBoxesNotCreated = false;
+                }
+
+                userType = 2;
+
+                placementButton.Enabled = true;
+            }
+
+            //INFORMATION OM ANSLUTNING
+            //STARTA SPEL + SPELBRÄDE
+            //BÖRJAR SPELA
+        }
+
+        private void mPJoinButton_Click(object sender, EventArgs e)
+        {
+            //KONTROLLERA OM ÖVER 20000, BARA SIFFROR
+            IPAddress adress = IPAddress.Parse(IPBox.Text);
+            client = new TcpClient();
+            client.NoDelay = true;
+            client.Connect(adress, int.Parse(PortBox.Text));
+
+            if (client.Connected)
+            {
+                //VÄNTAR PÅ SERVERSKAPARE
+                startGameButton.Enabled = false;
+                playersPanel.Visible = false;
+                ipPanel.Visible = false;
+                customizeShipsPanel.Visible = false;
+                settingsPanel.Visible = false;
+                mainGamePanel.Visible = true;
+
+                //checks if a gameboard has been created earlier
+                if (gameBoxesNotCreated)
+                {
+                    createEnemyGameBoxes();
+                    createUserGameBoxes();
+                    gameBoxesNotCreated = false;
+                }
+
+                userType = 3;
+
+                placementButton.Enabled = false;
+
+                if (client.GetStream().ReadByte() > 0)
+                {
+                    mPPlaceShips();
+
+                    //user is able to attack
+                    placementButton.Enabled = true;
+                }
+            }
+        }
+
         //leaves the battleship game back to main menu and resets board
         private void surrenderButton_Click(object sender, EventArgs e)
         {
@@ -798,60 +892,26 @@ namespace BattleShipGame
             //if an enemy box has been selected, round counter + 1
             if(enemyBoxClick)
             {
-                roundCounter++;
-                roundCountLabel.Text = roundCounter.ToString();
-
-                //USER ATTACK, checks if user has attacked a ship or an empty box. If user attacks a box again it will count as them skipping the round.
-                if (enemyBattleField[attackValueY, attackValueX] == 0)
+                if(userType == 1)
                 {
-                    //empty box to attacked box, no ship
-                    enemyGameBoxList[attackValueY, attackValueX].Text = selectedSprites[1].ToString();
-                    enemyBattleField[attackValueY, attackValueX] = 1;
+                    roundCounter++;
+                    roundCountLabel.Text = roundCounter.ToString();
+
+                    sPAttack();
                 }
-                else if (enemyBattleField[attackValueY, attackValueX] == 2)
+                else if(userType == 2)
                 {
-                    //ship box to attacked ship box
-                    enemyGameBoxList[attackValueY, attackValueX].Text = selectedSprites[3].ToString();
-                    enemyBattleField[attackValueY, attackValueX] = 3;
+                    mPAttack();
                 }
-
-                //AI ATTACK, randomizes which box to attack. Has to attack a box that hasn't been attacked
-                while (enemyBoxClick)
+                else
                 {
-                    randomY = random.Next(10);
-                    randomX = random.Next(10);
-                    //empty box
-                    if (userBattleField[randomY, randomX] == 0)
-                    {
-                        userGameBoxList[randomY, randomX].Text = selectedSprites[1].ToString();
-                        userBattleField[randomY, randomX] = 1;
+                    roundCounter++;
+                    roundCountLabel.Text = roundCounter.ToString();
+                    //SEND TO HOST
 
-                        enemyBoxClick = false;
-                        xCoordTextBox.Text = null;
-                        yCoordTextBox.Text = null;
-
-                        //checks enemy's and user's boards to determine winner
-                        countEnemyShips();
-                        countUserShips();
-                        checkWinner(enemyShipsLeft, userShipsLeft);
-                    }
-                    //box with ship
-                    else if (userBattleField[randomY, randomX] == 4)
-                    {
-                        userGameBoxList[randomY, randomX].Text = selectedSprites[5].ToString();
-                        userBattleField[randomY, randomX] = 5;
-
-                        enemyBoxClick = false;
-
-                        //checks enemy's and user's boards to determine winner
-                        countEnemyShips();
-                        countUserShips();
-                        checkWinner(enemyShipsLeft, userShipsLeft);
-                    }
+                    mPAttack();
                 }
             }
-
-
             //if no enemy box has been chosen, an error depending on the language shows up
             else
             {
@@ -881,6 +941,106 @@ namespace BattleShipGame
                 }
             }
         }
+
+        public void sPAttack()
+        {
+            //USER ATTACK, checks if user has attacked a ship or an empty box. If user attacks a box again it will count as them skipping the round.
+            if (enemyBattleField[attackValueY, attackValueX] == 0)
+            {
+                //empty box to attacked box, no ship
+                enemyGameBoxList[attackValueY, attackValueX].Text = selectedSprites[1].ToString();
+                enemyBattleField[attackValueY, attackValueX] = 1;
+            }
+            else if (enemyBattleField[attackValueY, attackValueX] == 2)
+            {
+                //ship box to attacked ship box
+                enemyGameBoxList[attackValueY, attackValueX].Text = selectedSprites[3].ToString();
+                enemyBattleField[attackValueY, attackValueX] = 3;
+            }
+
+            //AI ATTACK, randomizes which box to attack. Has to attack a box that hasn't been attacked
+            while (enemyBoxClick)
+            {
+                randomY = random.Next(10);
+                randomX = random.Next(10);
+                //empty box
+                if (userBattleField[randomY, randomX] == 0)
+                {
+                    userGameBoxList[randomY, randomX].Text = selectedSprites[1].ToString();
+                    userBattleField[randomY, randomX] = 1;
+
+                    enemyBoxClick = false;
+                    xCoordTextBox.Text = null;
+                    yCoordTextBox.Text = null;
+
+                    //checks enemy's and user's boards to determine winner
+                    countUserShips();
+                    checkWinner(enemyShipsLeft, userShipsLeft);
+                }
+                //box with ship
+                else if (userBattleField[randomY, randomX] == 4)
+                {
+                    userGameBoxList[randomY, randomX].Text = selectedSprites[5].ToString();
+                    userBattleField[randomY, randomX] = 5;
+
+                    enemyBoxClick = false;
+
+                    //checks enemy's and user's boards to determine winner
+                    countEnemyShips();
+                    countUserShips();
+                    checkWinner(enemyShipsLeft, userShipsLeft);
+                }
+            }
+        }
+
+        public void mPAttack()
+        {
+            //USER ATTACK, checks if user has attacked a ship or an empty box. If user attacks a box again it will count as them skipping the round.
+            if (enemyBattleField[attackValueY, attackValueX] == 0)
+            {
+                //empty box to attacked box, no ship
+                enemyGameBoxList[attackValueY, attackValueX].Text = selectedSprites[1].ToString();
+                enemyBattleField[attackValueY, attackValueX] = 1;
+                //this should only require one byte in comparison to 4 for an integer, minimum load on the internet and the computer only has to convert
+                byte[] dataOut = Encoding.UTF8.GetBytes("1");
+                client.GetStream().Write(dataOut, 0, dataOut.Length);
+            }
+            else if (enemyBattleField[attackValueY, attackValueX] == 2)
+            {
+                //ship box to attacked ship box
+                enemyGameBoxList[attackValueY, attackValueX].Text = selectedSprites[3].ToString();
+                enemyBattleField[attackValueY, attackValueX] = 3;
+                //this should only require one byte in comparison to 4 for an integer, minimum load on the internet and the computer only has to convert
+                //on the other person's board, their ship is crashed. thus 5.
+                byte[] dataOut = Encoding.UTF8.GetBytes("5");
+                client.GetStream().Write(dataOut, 0, dataOut.Length);
+            }
+            else
+            {
+                //0 bytes, nothing is technically sent
+                client.GetStream().Write(null, 0, 0);
+            }
+
+            attackButton.Enabled = false;
+
+            byte[] dataIn = new byte[256];
+            int totalBytes = client.GetStream().Read(dataIn, 0, dataIn.Length);
+            String textIn = Encoding.UTF8.GetString(dataIn, 0, totalBytes);
+            Console.WriteLine(textIn);
+
+            if (totalBytes > 0)
+            {
+                userGameBoxList[attackValueY, attackValueX].Text = selectedSprites[int.Parse(textIn)].ToString();
+                userBattleField[attackValueY, attackValueX] = int.Parse(textIn);
+            }
+            else
+            {
+
+            }
+
+            attackButton.Enabled = true;
+        }
+
         //counts how many ships the enemy has left, outprints them on the enemy ship counter label
         public void countEnemyShips()
         {
@@ -1030,13 +1190,28 @@ namespace BattleShipGame
         private void placementButton_Click(object sender, EventArgs e)
         {
             //checks enemy's and user's boards
-            countEnemyShips();
-            countUserShips();
+            //IF SINGLE/CLIENT
+            if(userType == 1 || userType == 3)
+            {
+                countEnemyShips();
+                countUserShips();
+                if(userType == 3)
+                {
+                    //SEND YOUR COUNT TO HOST
+                }
+            }
+            //IF HOST
+            else
+            {
+                countUserShips();
+            }
+
 
             //userboard must have 1 - 18 ships, disables this method and changes the color of the boxes who have user ships
             if (userShipsLeft >= 1 && userShipsLeft <= 18)
             {
                 placementButton.Enabled = false;
+                String placementText = null;
 
                 for (int i = 0; i < 10; i++)
                 {
@@ -1045,12 +1220,70 @@ namespace BattleShipGame
                         if (userBattleField[i, j] == 4)
                         {
                             userGameBoxList[i, j].ForeColor = Color.FromArgb(userShipColor);
+                            if (placementText == null)
+                            {
+                                placementText = "x" + i + "" + j + " ";
+                            }
+                            else
+                            {
+                                placementText = placementText + i + "" + j + " ";
+                            }
+                            //skicka detta till andra spelaren
+                            //de väntar på alla rutor och skriver in dem
                         }
                     }
                 }
-                //user is able to attack
-                attackButton.Enabled = true;
-                helpButton.Enabled = true;
+                //SINGLE PLAYER
+                if (userType == 1)
+                {
+                    attackButton.Enabled = true;
+                    helpButton.Enabled = true;
+                }
+                //ONLY ACTIVE WHEN YOUR TURN, MULTIPLAYER
+                else
+                {
+                    placementButton.Enabled = false;
+                    //HOST
+                    if (userType == 2)
+                    {
+                        //send ships
+                        byte[] dataOut = Encoding.UTF8.GetBytes(placementText);
+                        client.GetStream().Write(dataOut, 0, dataOut.Length);
+
+                        //invänta klient
+                        //börja attackera
+                        if (client.GetStream().ReadByte() > 0)
+                        {
+                            mPPlaceShips();
+                            countEnemyShips();
+                            attackButton.Enabled = true;
+                        }
+                    }
+                    else
+                    {
+                        //send ships
+                        byte[] dataOut = Encoding.UTF8.GetBytes(placementText);
+                        client.GetStream().Write(dataOut, 0, dataOut.Length);
+
+                        //get attacked box and play
+                        byte[] dataIn = new byte[256];
+                        int totalBytes = client.GetStream().Read(dataIn, 0, dataIn.Length);
+                        String textIn = Encoding.UTF8.GetString(dataIn, 0, totalBytes);
+                        Console.WriteLine(textIn);
+
+                        if (totalBytes > 0)
+                        {
+                            userGameBoxList[attackValueY, attackValueX].Text = selectedSprites[int.Parse(textIn)].ToString();
+                            userBattleField[attackValueY, attackValueX] = int.Parse(textIn);
+                        }
+                        else
+                        {
+
+                        }
+                        //user is able to attack
+                        attackButton.Enabled = true;
+                    }
+                }
             }
             //if wrong amount of user ships, user gets an error message
             else if (userShipsLeft > 18)
@@ -1117,6 +1350,27 @@ namespace BattleShipGame
                     }
                 }
             }
+        }
+
+        //multiplayer method for ship placement
+        private void mPPlaceShips()
+        {
+            byte[] dataIn = new byte[256];
+            int totalBytes = client.GetStream().Read(dataIn, 0, dataIn.Length);
+            String textIn = Encoding.UTF8.GetString(dataIn, 0, totalBytes);
+            Console.WriteLine(textIn);
+
+            for (int i = 0; i < textIn.Length - 1; i++)
+            {
+                if (Char.IsDigit(textIn[i]) && Char.IsDigit(textIn[i + 1]))
+                {
+                    enemyBattleField[(textIn[i] - 48), (textIn[i + 1] - 48)] = 2;
+                    Console.WriteLine("" + (textIn[i] - 48) + "" + (textIn[i + 1] - 48) + " ");
+                }
+            }
+
+            //fix enemy color
+            translateEnemyBoxes();
         }
 
         //lets the user reveal randomized enemy ship

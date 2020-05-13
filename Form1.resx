@@ -226,7 +226,7 @@
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;startGameButton.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="tableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
     <value>1</value>
@@ -256,7 +256,7 @@
     <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;informationButton.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="tableLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>300, 218</value>
@@ -283,10 +283,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel1.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="informationButton" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="startGameButton" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="quitGameButton" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="settingsButton" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="customizeShipsButton" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="Percent,20,Percent,20,Percent,20,Percent,20,Percent,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="startGameButton" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="informationButton" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="quitGameButton" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="settingsButton" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="customizeShipsButton" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="Percent,20,Percent,20,Percent,20,Percent,20,Percent,20" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -349,7 +349,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;pictureBox1.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="uForeColorBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 10pt</value>
@@ -778,16 +778,16 @@
     <value>14</value>
   </data>
   <data name="csHomeButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>96, 401</value>
+    <value>117, 408</value>
   </data>
   <data name="csHomeButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
+    <value>24, 23</value>
   </data>
   <data name="csHomeButton.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="csHomeButton.Text" xml:space="preserve">
-    <value>Menu</value>
+    <value>X</value>
   </data>
   <data name="&gt;&gt;csHomeButton.Name" xml:space="preserve">
     <value>csHomeButton</value>
@@ -823,229 +823,352 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;customizeShipsPanel.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="rButtonMandarin.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="rButtonMandarin.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="rButtonMandarin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 104</value>
-  </data>
-  <data name="rButtonMandarin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>91, 17</value>
-  </data>
-  <data name="rButtonMandarin.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="rButtonMandarin.Text" xml:space="preserve">
-    <value>中文(繁體字)</value>
-  </data>
-  <data name="&gt;&gt;rButtonMandarin.Name" xml:space="preserve">
-    <value>rButtonMandarin</value>
-  </data>
-  <data name="&gt;&gt;rButtonMandarin.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;rButtonMandarin.Parent" xml:space="preserve">
-    <value>settingsPanel</value>
-  </data>
-  <data name="&gt;&gt;rButtonMandarin.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="sHomeButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="sHomeButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>108, 174</value>
-  </data>
-  <data name="sHomeButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="sHomeButton.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="sHomeButton.Text" xml:space="preserve">
-    <value>Menu</value>
-  </data>
-  <data name="&gt;&gt;sHomeButton.Name" xml:space="preserve">
-    <value>sHomeButton</value>
-  </data>
-  <data name="&gt;&gt;sHomeButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;sHomeButton.Parent" xml:space="preserve">
-    <value>settingsPanel</value>
-  </data>
-  <data name="&gt;&gt;sHomeButton.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="rButtonFrench.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="rButtonFrench.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="rButtonFrench.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 81</value>
-  </data>
-  <data name="rButtonFrench.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 17</value>
-  </data>
-  <data name="rButtonFrench.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="rButtonFrench.Text" xml:space="preserve">
-    <value>Français</value>
-  </data>
-  <data name="&gt;&gt;rButtonFrench.Name" xml:space="preserve">
-    <value>rButtonFrench</value>
-  </data>
-  <data name="&gt;&gt;rButtonFrench.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;rButtonFrench.Parent" xml:space="preserve">
-    <value>settingsPanel</value>
-  </data>
-  <data name="&gt;&gt;rButtonFrench.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="rButtonSwedish.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="rButtonSwedish.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="rButtonSwedish.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 58</value>
-  </data>
-  <data name="rButtonSwedish.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 17</value>
-  </data>
-  <data name="rButtonSwedish.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="rButtonSwedish.Text" xml:space="preserve">
-    <value>Svenska</value>
-  </data>
-  <data name="&gt;&gt;rButtonSwedish.Name" xml:space="preserve">
-    <value>rButtonSwedish</value>
-  </data>
-  <data name="&gt;&gt;rButtonSwedish.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;rButtonSwedish.Parent" xml:space="preserve">
-    <value>settingsPanel</value>
-  </data>
-  <data name="&gt;&gt;rButtonSwedish.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="rButtonEnglish.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="rButtonEnglish.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 35</value>
-  </data>
-  <data name="rButtonEnglish.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 17</value>
-  </data>
-  <data name="rButtonEnglish.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="rButtonEnglish.Text" xml:space="preserve">
-    <value>English</value>
-  </data>
-  <data name="&gt;&gt;rButtonEnglish.Name" xml:space="preserve">
-    <value>rButtonEnglish</value>
-  </data>
-  <data name="&gt;&gt;rButtonEnglish.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;rButtonEnglish.Parent" xml:space="preserve">
-    <value>settingsPanel</value>
-  </data>
-  <data name="&gt;&gt;rButtonEnglish.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="yLanguageButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 127</value>
-  </data>
-  <data name="yLanguageButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="yLanguageButton.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="yLanguageButton.Text" xml:space="preserve">
-    <value>Confirm</value>
-  </data>
-  <data name="&gt;&gt;yLanguageButton.Name" xml:space="preserve">
-    <value>yLanguageButton</value>
-  </data>
-  <data name="&gt;&gt;yLanguageButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;yLanguageButton.Parent" xml:space="preserve">
-    <value>settingsPanel</value>
-  </data>
-  <data name="&gt;&gt;yLanguageButton.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="languageLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="languageLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 9</value>
-  </data>
-  <data name="languageLabel.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>5, 5, 5, 5</value>
-  </data>
-  <data name="languageLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>94, 23</value>
-  </data>
-  <data name="languageLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="languageLabel.Text" xml:space="preserve">
-    <value>Select language</value>
-  </data>
-  <data name="&gt;&gt;languageLabel.Name" xml:space="preserve">
-    <value>languageLabel</value>
-  </data>
-  <data name="&gt;&gt;languageLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;languageLabel.Parent" xml:space="preserve">
-    <value>settingsPanel</value>
-  </data>
-  <data name="&gt;&gt;languageLabel.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="settingsPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
-  </data>
-  <data name="settingsPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>282, 200</value>
-  </data>
-  <data name="settingsPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="settingsPanel.Visible" type="System.Boolean, mscorlib">
+  <data name="helpButton.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="&gt;&gt;settingsPanel.Name" xml:space="preserve">
-    <value>settingsPanel</value>
+  <data name="helpButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt</value>
   </data>
-  <data name="&gt;&gt;settingsPanel.Type" xml:space="preserve">
+  <data name="helpButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="helpButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>331, 215</value>
+  </data>
+  <data name="helpButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>104, 23</value>
+  </data>
+  <data name="helpButton.TabIndex" type="System.Int32, mscorlib">
+    <value>108</value>
+  </data>
+  <data name="helpButton.Text" xml:space="preserve">
+    <value>Reveal a ship</value>
+  </data>
+  <data name="&gt;&gt;helpButton.Name" xml:space="preserve">
+    <value>helpButton</value>
+  </data>
+  <data name="&gt;&gt;helpButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;helpButton.Parent" xml:space="preserve">
+    <value>mainGamePanel</value>
+  </data>
+  <data name="&gt;&gt;helpButton.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="placementButton.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="placementButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="placementButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>577, 336</value>
+  </data>
+  <data name="placementButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 23</value>
+  </data>
+  <data name="placementButton.TabIndex" type="System.Int32, mscorlib">
+    <value>108</value>
+  </data>
+  <data name="placementButton.Text" xml:space="preserve">
+    <value>Confirm placements</value>
+  </data>
+  <data name="&gt;&gt;placementButton.Name" xml:space="preserve">
+    <value>placementButton</value>
+  </data>
+  <data name="&gt;&gt;placementButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;placementButton.Parent" xml:space="preserve">
+    <value>mainGamePanel</value>
+  </data>
+  <data name="&gt;&gt;placementButton.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="userShipsLeftCountLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="userShipsLeftCountLabel.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="userShipsLeftCountLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="userShipsLeftCountLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>438, 359</value>
+  </data>
+  <data name="userShipsLeftCountLabel.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 5, 5, 5</value>
+  </data>
+  <data name="userShipsLeftCountLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 23</value>
+  </data>
+  <data name="userShipsLeftCountLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>106</value>
+  </data>
+  <data name="userShipsLeftCountLabel.Text" xml:space="preserve">
+    <value>?</value>
+  </data>
+  <data name="&gt;&gt;userShipsLeftCountLabel.Name" xml:space="preserve">
+    <value>userShipsLeftCountLabel</value>
+  </data>
+  <data name="&gt;&gt;userShipsLeftCountLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;userShipsLeftCountLabel.Parent" xml:space="preserve">
+    <value>mainGamePanel</value>
+  </data>
+  <data name="&gt;&gt;userShipsLeftCountLabel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="userShipsLeftLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="userShipsLeftLabel.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="userShipsLeftLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="userShipsLeftLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>438, 336</value>
+  </data>
+  <data name="userShipsLeftLabel.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 5, 5, 5</value>
+  </data>
+  <data name="userShipsLeftLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 23</value>
+  </data>
+  <data name="userShipsLeftLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>105</value>
+  </data>
+  <data name="userShipsLeftLabel.Text" xml:space="preserve">
+    <value>Ships left:</value>
+  </data>
+  <data name="&gt;&gt;userShipsLeftLabel.Name" xml:space="preserve">
+    <value>userShipsLeftLabel</value>
+  </data>
+  <data name="&gt;&gt;userShipsLeftLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;userShipsLeftLabel.Parent" xml:space="preserve">
+    <value>mainGamePanel</value>
+  </data>
+  <data name="&gt;&gt;userShipsLeftLabel.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="roundCountLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="roundCountLabel.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="roundCountLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="roundCountLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>399, 174</value>
+  </data>
+  <data name="roundCountLabel.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 5, 5, 5</value>
+  </data>
+  <data name="roundCountLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 23</value>
+  </data>
+  <data name="roundCountLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>103</value>
+  </data>
+  <data name="roundCountLabel.Text" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;roundCountLabel.Name" xml:space="preserve">
+    <value>roundCountLabel</value>
+  </data>
+  <data name="&gt;&gt;roundCountLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;roundCountLabel.Parent" xml:space="preserve">
+    <value>mainGamePanel</value>
+  </data>
+  <data name="&gt;&gt;roundCountLabel.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="surrenderButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="surrenderButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>346, 388</value>
+  </data>
+  <data name="surrenderButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="surrenderButton.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="surrenderButton.Text" xml:space="preserve">
+    <value>Surrender</value>
+  </data>
+  <data name="&gt;&gt;surrenderButton.Name" xml:space="preserve">
+    <value>surrenderButton</value>
+  </data>
+  <data name="&gt;&gt;surrenderButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;surrenderButton.Parent" xml:space="preserve">
+    <value>mainGamePanel</value>
+  </data>
+  <data name="&gt;&gt;surrenderButton.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="uBattleFieldLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="uBattleFieldLabel.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="uBattleFieldLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="uBattleFieldLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 10</value>
+  </data>
+  <data name="uBattleFieldLabel.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 5, 5, 5</value>
+  </data>
+  <data name="uBattleFieldLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>87, 23</value>
+  </data>
+  <data name="uBattleFieldLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>101</value>
+  </data>
+  <data name="uBattleFieldLabel.Text" xml:space="preserve">
+    <value>Your battlefield</value>
+  </data>
+  <data name="&gt;&gt;uBattleFieldLabel.Name" xml:space="preserve">
+    <value>uBattleFieldLabel</value>
+  </data>
+  <data name="&gt;&gt;uBattleFieldLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;uBattleFieldLabel.Parent" xml:space="preserve">
+    <value>gamePanel3</value>
+  </data>
+  <data name="&gt;&gt;uBattleFieldLabel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="gamePanel3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>441, 9</value>
+  </data>
+  <data name="gamePanel3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>282, 315</value>
+  </data>
+  <data name="gamePanel3.TabIndex" type="System.Int32, mscorlib">
+    <value>104</value>
+  </data>
+  <data name="&gt;&gt;gamePanel3.Name" xml:space="preserve">
+    <value>gamePanel3</value>
+  </data>
+  <data name="&gt;&gt;gamePanel3.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;settingsPanel.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;gamePanel3.Parent" xml:space="preserve">
+    <value>mainGamePanel</value>
   </data>
-  <data name="&gt;&gt;settingsPanel.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;gamePanel3.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="roundLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="roundLabel.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="roundLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="roundLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>347, 174</value>
+  </data>
+  <data name="roundLabel.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 5, 5, 5</value>
+  </data>
+  <data name="roundLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 23</value>
+  </data>
+  <data name="roundLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>102</value>
+  </data>
+  <data name="roundLabel.Text" xml:space="preserve">
+    <value>Round:</value>
+  </data>
+  <data name="&gt;&gt;roundLabel.Name" xml:space="preserve">
+    <value>roundLabel</value>
+  </data>
+  <data name="&gt;&gt;roundLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;roundLabel.Parent" xml:space="preserve">
+    <value>mainGamePanel</value>
+  </data>
+  <data name="&gt;&gt;roundLabel.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="eBattleFieldLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="eBattleFieldLabel.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="eBattleFieldLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 10</value>
+  </data>
+  <data name="eBattleFieldLabel.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 5, 5, 5</value>
+  </data>
+  <data name="eBattleFieldLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>97, 23</value>
+  </data>
+  <data name="eBattleFieldLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>101</value>
+  </data>
+  <data name="eBattleFieldLabel.Text" xml:space="preserve">
+    <value>Enemy battlefield</value>
+  </data>
+  <data name="&gt;&gt;eBattleFieldLabel.Name" xml:space="preserve">
+    <value>eBattleFieldLabel</value>
+  </data>
+  <data name="&gt;&gt;eBattleFieldLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;eBattleFieldLabel.Parent" xml:space="preserve">
+    <value>gamePanel2</value>
+  </data>
+  <data name="&gt;&gt;eBattleFieldLabel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="gamePanel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>43, 9</value>
+  </data>
+  <data name="gamePanel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>282, 315</value>
+  </data>
+  <data name="gamePanel2.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;gamePanel2.Name" xml:space="preserve">
+    <value>gamePanel2</value>
+  </data>
+  <data name="&gt;&gt;gamePanel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;gamePanel2.Parent" xml:space="preserve">
+    <value>mainGamePanel</value>
+  </data>
+  <data name="&gt;&gt;gamePanel2.ZOrder" xml:space="preserve">
+    <value>8</value>
   </data>
   <data name="enemyShipsLeftCountLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1269,351 +1392,6 @@
   <data name="&gt;&gt;gamePanel.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
-  <data name="eBattleFieldLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="eBattleFieldLabel.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="eBattleFieldLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 10</value>
-  </data>
-  <data name="eBattleFieldLabel.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>5, 5, 5, 5</value>
-  </data>
-  <data name="eBattleFieldLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>97, 23</value>
-  </data>
-  <data name="eBattleFieldLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>101</value>
-  </data>
-  <data name="eBattleFieldLabel.Text" xml:space="preserve">
-    <value>Enemy battlefield</value>
-  </data>
-  <data name="&gt;&gt;eBattleFieldLabel.Name" xml:space="preserve">
-    <value>eBattleFieldLabel</value>
-  </data>
-  <data name="&gt;&gt;eBattleFieldLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;eBattleFieldLabel.Parent" xml:space="preserve">
-    <value>gamePanel2</value>
-  </data>
-  <data name="&gt;&gt;eBattleFieldLabel.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="gamePanel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>43, 9</value>
-  </data>
-  <data name="gamePanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>282, 315</value>
-  </data>
-  <data name="gamePanel2.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
-  </data>
-  <data name="&gt;&gt;gamePanel2.Name" xml:space="preserve">
-    <value>gamePanel2</value>
-  </data>
-  <data name="&gt;&gt;gamePanel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;gamePanel2.Parent" xml:space="preserve">
-    <value>mainGamePanel</value>
-  </data>
-  <data name="&gt;&gt;gamePanel2.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="roundCountLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="roundCountLabel.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="roundCountLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="roundCountLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>399, 174</value>
-  </data>
-  <data name="roundCountLabel.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>5, 5, 5, 5</value>
-  </data>
-  <data name="roundCountLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 23</value>
-  </data>
-  <data name="roundCountLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>103</value>
-  </data>
-  <data name="roundCountLabel.Text" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;roundCountLabel.Name" xml:space="preserve">
-    <value>roundCountLabel</value>
-  </data>
-  <data name="&gt;&gt;roundCountLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;roundCountLabel.Parent" xml:space="preserve">
-    <value>mainGamePanel</value>
-  </data>
-  <data name="&gt;&gt;roundCountLabel.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="roundLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="roundLabel.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="roundLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="roundLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>347, 174</value>
-  </data>
-  <data name="roundLabel.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>5, 5, 5, 5</value>
-  </data>
-  <data name="roundLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 23</value>
-  </data>
-  <data name="roundLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>102</value>
-  </data>
-  <data name="roundLabel.Text" xml:space="preserve">
-    <value>Round:</value>
-  </data>
-  <data name="&gt;&gt;roundLabel.Name" xml:space="preserve">
-    <value>roundLabel</value>
-  </data>
-  <data name="&gt;&gt;roundLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;roundLabel.Parent" xml:space="preserve">
-    <value>mainGamePanel</value>
-  </data>
-  <data name="&gt;&gt;roundLabel.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="helpButton.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="helpButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8.25pt</value>
-  </data>
-  <data name="helpButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="helpButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>331, 215</value>
-  </data>
-  <data name="helpButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>104, 23</value>
-  </data>
-  <data name="helpButton.TabIndex" type="System.Int32, mscorlib">
-    <value>108</value>
-  </data>
-  <data name="helpButton.Text" xml:space="preserve">
-    <value>Reveal a ship</value>
-  </data>
-  <data name="&gt;&gt;helpButton.Name" xml:space="preserve">
-    <value>helpButton</value>
-  </data>
-  <data name="&gt;&gt;helpButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;helpButton.Parent" xml:space="preserve">
-    <value>mainGamePanel</value>
-  </data>
-  <data name="&gt;&gt;helpButton.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="placementButton.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="placementButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="placementButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>577, 336</value>
-  </data>
-  <data name="placementButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 23</value>
-  </data>
-  <data name="placementButton.TabIndex" type="System.Int32, mscorlib">
-    <value>108</value>
-  </data>
-  <data name="placementButton.Text" xml:space="preserve">
-    <value>Confirm placements</value>
-  </data>
-  <data name="&gt;&gt;placementButton.Name" xml:space="preserve">
-    <value>placementButton</value>
-  </data>
-  <data name="&gt;&gt;placementButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;placementButton.Parent" xml:space="preserve">
-    <value>mainGamePanel</value>
-  </data>
-  <data name="&gt;&gt;placementButton.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="userShipsLeftCountLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="userShipsLeftCountLabel.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="userShipsLeftCountLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="userShipsLeftCountLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>438, 359</value>
-  </data>
-  <data name="userShipsLeftCountLabel.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>5, 5, 5, 5</value>
-  </data>
-  <data name="userShipsLeftCountLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 23</value>
-  </data>
-  <data name="userShipsLeftCountLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>106</value>
-  </data>
-  <data name="userShipsLeftCountLabel.Text" xml:space="preserve">
-    <value>?</value>
-  </data>
-  <data name="&gt;&gt;userShipsLeftCountLabel.Name" xml:space="preserve">
-    <value>userShipsLeftCountLabel</value>
-  </data>
-  <data name="&gt;&gt;userShipsLeftCountLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;userShipsLeftCountLabel.Parent" xml:space="preserve">
-    <value>mainGamePanel</value>
-  </data>
-  <data name="&gt;&gt;userShipsLeftCountLabel.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="userShipsLeftLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="userShipsLeftLabel.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="userShipsLeftLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="userShipsLeftLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>438, 336</value>
-  </data>
-  <data name="userShipsLeftLabel.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>5, 5, 5, 5</value>
-  </data>
-  <data name="userShipsLeftLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 23</value>
-  </data>
-  <data name="userShipsLeftLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>105</value>
-  </data>
-  <data name="userShipsLeftLabel.Text" xml:space="preserve">
-    <value>Ships left:</value>
-  </data>
-  <data name="&gt;&gt;userShipsLeftLabel.Name" xml:space="preserve">
-    <value>userShipsLeftLabel</value>
-  </data>
-  <data name="&gt;&gt;userShipsLeftLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;userShipsLeftLabel.Parent" xml:space="preserve">
-    <value>mainGamePanel</value>
-  </data>
-  <data name="&gt;&gt;userShipsLeftLabel.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="surrenderButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="surrenderButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>346, 388</value>
-  </data>
-  <data name="surrenderButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="surrenderButton.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="surrenderButton.Text" xml:space="preserve">
-    <value>Surrender</value>
-  </data>
-  <data name="&gt;&gt;surrenderButton.Name" xml:space="preserve">
-    <value>surrenderButton</value>
-  </data>
-  <data name="&gt;&gt;surrenderButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;surrenderButton.Parent" xml:space="preserve">
-    <value>mainGamePanel</value>
-  </data>
-  <data name="&gt;&gt;surrenderButton.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="uBattleFieldLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="uBattleFieldLabel.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="uBattleFieldLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="uBattleFieldLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 10</value>
-  </data>
-  <data name="uBattleFieldLabel.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>5, 5, 5, 5</value>
-  </data>
-  <data name="uBattleFieldLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 23</value>
-  </data>
-  <data name="uBattleFieldLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>101</value>
-  </data>
-  <data name="uBattleFieldLabel.Text" xml:space="preserve">
-    <value>Your battlefield</value>
-  </data>
-  <data name="&gt;&gt;uBattleFieldLabel.Name" xml:space="preserve">
-    <value>uBattleFieldLabel</value>
-  </data>
-  <data name="&gt;&gt;uBattleFieldLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;uBattleFieldLabel.Parent" xml:space="preserve">
-    <value>gamePanel3</value>
-  </data>
-  <data name="&gt;&gt;uBattleFieldLabel.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="gamePanel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>441, 9</value>
-  </data>
-  <data name="gamePanel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>282, 315</value>
-  </data>
-  <data name="gamePanel3.TabIndex" type="System.Int32, mscorlib">
-    <value>104</value>
-  </data>
-  <data name="&gt;&gt;gamePanel3.Name" xml:space="preserve">
-    <value>gamePanel3</value>
-  </data>
-  <data name="&gt;&gt;gamePanel3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;gamePanel3.Parent" xml:space="preserve">
-    <value>mainGamePanel</value>
-  </data>
-  <data name="&gt;&gt;gamePanel3.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
   <data name="mainGamePanel.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 12</value>
   </data>
@@ -1638,17 +1416,539 @@
   <data name="&gt;&gt;mainGamePanel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="rButtonMandarin.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="rButtonMandarin.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="rButtonMandarin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 104</value>
+  </data>
+  <data name="rButtonMandarin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 17</value>
+  </data>
+  <data name="rButtonMandarin.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="rButtonMandarin.Text" xml:space="preserve">
+    <value>中文(繁體字)</value>
+  </data>
+  <data name="&gt;&gt;rButtonMandarin.Name" xml:space="preserve">
+    <value>rButtonMandarin</value>
+  </data>
+  <data name="&gt;&gt;rButtonMandarin.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rButtonMandarin.Parent" xml:space="preserve">
+    <value>settingsPanel</value>
+  </data>
+  <data name="&gt;&gt;rButtonMandarin.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="sHomeButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="sHomeButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>126, 174</value>
+  </data>
+  <data name="sHomeButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 23</value>
+  </data>
+  <data name="sHomeButton.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="sHomeButton.Text" xml:space="preserve">
+    <value>X</value>
+  </data>
+  <data name="&gt;&gt;sHomeButton.Name" xml:space="preserve">
+    <value>sHomeButton</value>
+  </data>
+  <data name="&gt;&gt;sHomeButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;sHomeButton.Parent" xml:space="preserve">
+    <value>settingsPanel</value>
+  </data>
+  <data name="&gt;&gt;sHomeButton.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="rButtonFrench.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="rButtonFrench.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="rButtonFrench.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 81</value>
+  </data>
+  <data name="rButtonFrench.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 17</value>
+  </data>
+  <data name="rButtonFrench.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="rButtonFrench.Text" xml:space="preserve">
+    <value>Français</value>
+  </data>
+  <data name="&gt;&gt;rButtonFrench.Name" xml:space="preserve">
+    <value>rButtonFrench</value>
+  </data>
+  <data name="&gt;&gt;rButtonFrench.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rButtonFrench.Parent" xml:space="preserve">
+    <value>settingsPanel</value>
+  </data>
+  <data name="&gt;&gt;rButtonFrench.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="rButtonSwedish.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="rButtonSwedish.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="rButtonSwedish.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 58</value>
+  </data>
+  <data name="rButtonSwedish.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 17</value>
+  </data>
+  <data name="rButtonSwedish.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="rButtonSwedish.Text" xml:space="preserve">
+    <value>Svenska</value>
+  </data>
+  <data name="&gt;&gt;rButtonSwedish.Name" xml:space="preserve">
+    <value>rButtonSwedish</value>
+  </data>
+  <data name="&gt;&gt;rButtonSwedish.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rButtonSwedish.Parent" xml:space="preserve">
+    <value>settingsPanel</value>
+  </data>
+  <data name="&gt;&gt;rButtonSwedish.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="rButtonEnglish.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="rButtonEnglish.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 35</value>
+  </data>
+  <data name="rButtonEnglish.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 17</value>
+  </data>
+  <data name="rButtonEnglish.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="rButtonEnglish.Text" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="&gt;&gt;rButtonEnglish.Name" xml:space="preserve">
+    <value>rButtonEnglish</value>
+  </data>
+  <data name="&gt;&gt;rButtonEnglish.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rButtonEnglish.Parent" xml:space="preserve">
+    <value>settingsPanel</value>
+  </data>
+  <data name="&gt;&gt;rButtonEnglish.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="yLanguageButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 127</value>
+  </data>
+  <data name="yLanguageButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="yLanguageButton.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="yLanguageButton.Text" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="&gt;&gt;yLanguageButton.Name" xml:space="preserve">
+    <value>yLanguageButton</value>
+  </data>
+  <data name="&gt;&gt;yLanguageButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;yLanguageButton.Parent" xml:space="preserve">
+    <value>settingsPanel</value>
+  </data>
+  <data name="&gt;&gt;yLanguageButton.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="languageLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="languageLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 9</value>
+  </data>
+  <data name="languageLabel.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 5, 5, 5</value>
+  </data>
+  <data name="languageLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 23</value>
+  </data>
+  <data name="languageLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="languageLabel.Text" xml:space="preserve">
+    <value>Select language</value>
+  </data>
+  <data name="&gt;&gt;languageLabel.Name" xml:space="preserve">
+    <value>languageLabel</value>
+  </data>
+  <data name="&gt;&gt;languageLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;languageLabel.Parent" xml:space="preserve">
+    <value>settingsPanel</value>
+  </data>
+  <data name="&gt;&gt;languageLabel.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="settingsPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="settingsPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>282, 200</value>
+  </data>
+  <data name="settingsPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="settingsPanel.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;settingsPanel.Name" xml:space="preserve">
+    <value>settingsPanel</value>
+  </data>
+  <data name="&gt;&gt;settingsPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;settingsPanel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;settingsPanel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <metadata name="eForeColorDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
   <metadata name="uForeColorDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>164, 17</value>
   </metadata>
+  <data name="sPlayerButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="sPlayerButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>27, 21</value>
+  </data>
+  <data name="sPlayerButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 35</value>
+  </data>
+  <data name="sPlayerButton.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="sPlayerButton.Text" xml:space="preserve">
+    <value>Single player</value>
+  </data>
+  <data name="&gt;&gt;sPlayerButton.Name" xml:space="preserve">
+    <value>sPlayerButton</value>
+  </data>
+  <data name="&gt;&gt;sPlayerButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;sPlayerButton.Parent" xml:space="preserve">
+    <value>playersPanel</value>
+  </data>
+  <data name="&gt;&gt;sPlayerButton.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="mPlayerButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="mPlayerButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>156, 21</value>
+  </data>
+  <data name="mPlayerButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 35</value>
+  </data>
+  <data name="mPlayerButton.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="mPlayerButton.Text" xml:space="preserve">
+    <value>Multiplayer</value>
+  </data>
+  <data name="&gt;&gt;mPlayerButton.Name" xml:space="preserve">
+    <value>mPlayerButton</value>
+  </data>
+  <data name="&gt;&gt;mPlayerButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;mPlayerButton.Parent" xml:space="preserve">
+    <value>playersPanel</value>
+  </data>
+  <data name="&gt;&gt;mPlayerButton.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>21, 12</value>
+  </data>
+  <data name="label5.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 5, 5, 5</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>209, 23</value>
+  </data>
+  <data name="label5.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Fill in both to join, only fill in port to create</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>ipPanel</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="mPCreateButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="mPCreateButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>153, 102</value>
+  </data>
+  <data name="mPCreateButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 35</value>
+  </data>
+  <data name="mPCreateButton.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="mPCreateButton.Text" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="&gt;&gt;mPCreateButton.Name" xml:space="preserve">
+    <value>mPCreateButton</value>
+  </data>
+  <data name="&gt;&gt;mPCreateButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;mPCreateButton.Parent" xml:space="preserve">
+    <value>ipPanel</value>
+  </data>
+  <data name="&gt;&gt;mPCreateButton.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="mPJoinButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="mPJoinButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>24, 102</value>
+  </data>
+  <data name="mPJoinButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 35</value>
+  </data>
+  <data name="mPJoinButton.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="mPJoinButton.Text" xml:space="preserve">
+    <value>Join</value>
+  </data>
+  <data name="&gt;&gt;mPJoinButton.Name" xml:space="preserve">
+    <value>mPJoinButton</value>
+  </data>
+  <data name="&gt;&gt;mPJoinButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;mPJoinButton.Parent" xml:space="preserve">
+    <value>ipPanel</value>
+  </data>
+  <data name="&gt;&gt;mPJoinButton.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>150, 43</value>
+  </data>
+  <data name="label4.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 5, 5, 5</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 23</value>
+  </data>
+  <data name="label4.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Port</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>ipPanel</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>21, 43</value>
+  </data>
+  <data name="label3.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 5, 5, 5</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>27, 23</value>
+  </data>
+  <data name="label3.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>IP</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>ipPanel</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="IPBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>24, 76</value>
+  </data>
+  <data name="IPBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 20</value>
+  </data>
+  <data name="IPBox.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;IPBox.Name" xml:space="preserve">
+    <value>IPBox</value>
+  </data>
+  <data name="&gt;&gt;IPBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;IPBox.Parent" xml:space="preserve">
+    <value>ipPanel</value>
+  </data>
+  <data name="&gt;&gt;IPBox.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="PortBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>153, 76</value>
+  </data>
+  <data name="PortBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 20</value>
+  </data>
+  <data name="PortBox.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;PortBox.Name" xml:space="preserve">
+    <value>PortBox</value>
+  </data>
+  <data name="&gt;&gt;PortBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PortBox.Parent" xml:space="preserve">
+    <value>ipPanel</value>
+  </data>
+  <data name="&gt;&gt;PortBox.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="ipPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 62</value>
+  </data>
+  <data name="ipPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>276, 163</value>
+  </data>
+  <data name="ipPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="ipPanel.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;ipPanel.Name" xml:space="preserve">
+    <value>ipPanel</value>
+  </data>
+  <data name="&gt;&gt;ipPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ipPanel.Parent" xml:space="preserve">
+    <value>playersPanel</value>
+  </data>
+  <data name="&gt;&gt;ipPanel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="playersPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 218</value>
+  </data>
+  <data name="playersPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>282, 228</value>
+  </data>
+  <data name="playersPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="playersPanel.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;playersPanel.Name" xml:space="preserve">
+    <value>playersPanel</value>
+  </data>
+  <data name="&gt;&gt;playersPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;playersPanel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;playersPanel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>46</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
