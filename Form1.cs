@@ -22,22 +22,15 @@ namespace BattleShipGame
         TextBox[,] userGameBoxList = new TextBox[10, 10];
         //other necessary variables
         int roundCounter = 1;
-        Boolean assumeEmpty;
-        int randomX, randomY;
-        int xOrYShip;
-        int shipCounter;
-        int shipSize;
+        Boolean assumeEmpty, enemyBoxClick;
+        //userType: 1.single player, 2.host, 3.client
+        int randomX, randomY, xOrYShip, shipCounter, shipSize, enemyShipsLeft, userShipsLeft, attackValueX, attackValueY, userType;
         Random random = new Random();
         Boolean gameBoxesNotCreated = true;
-        int enemyShipsLeft, userShipsLeft;
-        Boolean enemyBoxClick = false;
-        int attackValueX, attackValueY;
         Boolean[] languageList = { true, false, false, false };
         char[] selectedSprites = { ' ', 'X', '€', '¤', 'Ü', '@' };
         int enemyShipColor, userShipColor = 0;
-        //1.single player, 2.host, 3.client
-        int userType;
-
+        String placementText;
         TcpListener listener;
         TcpClient client;
 
@@ -46,7 +39,7 @@ namespace BattleShipGame
             InitializeComponent();
         }
 
-        //Quits game
+        //Quits game, closes window
         private void quitGameButton_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -65,7 +58,9 @@ namespace BattleShipGame
                                 "1. You must place 1-18 vessels on your board and confirm in order to start attacking, you add them by clicking your boxes" + Environment.NewLine +
                                 "2. You attack the enemy by selecting one of their boxes and clicking 'strike', they strike back and you can attack again. This will continue until there are no ships left on either board" + Environment.NewLine +
                                 "3. If the game is too hard you can cheat with 'reveal a ship', it's use is obvious, you will not lose a round in this version " + Environment.NewLine +
-                                "4. If you and/or your enemy run out of ships, you will win/lose/draw and the game board will be reset", "How to play");
+                                "4. If you and/or your enemy run out of ships, you will win/lose/draw and the game board will be reset" + Environment.NewLine +
+                                "5. In multiplayer you wait for your opponent, you can play again once they have made their move" + Environment.NewLine +
+                                "6. Multiplayer only available in English", "How to play");
                             break;
 
                         case 1:
@@ -95,7 +90,6 @@ namespace BattleShipGame
         {
             settingsPanel.Visible = true;
         }
-
         //Closes customise ships panel
         private void csHomeButton_Click(object sender, EventArgs e)
         {
@@ -106,7 +100,6 @@ namespace BattleShipGame
         {
             settingsPanel.Visible = false;
         }
-
 
         //language confirm button, checks which language is selected when pressing the button
         private void yLanguageButton_Click(object sender, EventArgs e)
@@ -386,7 +379,7 @@ namespace BattleShipGame
             }
         }
 
-        
+        //shows a panel where player can choose to play multiplayer/singleplayer
         private void startGameButton_Click(object sender, EventArgs e)
         {
             playersPanel.Visible = true;
@@ -415,95 +408,174 @@ namespace BattleShipGame
                 translateEnemyBoxes();
             }
 
+            //sets user type to single player
             userType = 1;
 
             placementButton.Enabled = true;
+            surrenderButton.Enabled = true;
         }
 
+        //Shows a panel where the user can choose to be host/client
         private void mPlayerButton_Click(object sender, EventArgs e)
         {
             ipPanel.Visible = true;
         }
-
-        private void mPCreateButton_Click(object sender, EventArgs e)
+        
+        //Starts multiplayer game as host
+        async private void mPCreateButton_Click(object sender, EventArgs e)
         {
-            //KONTROLLERA OM ÖVER 20000, BARA SIFFROR
-            listener = new TcpListener(IPAddress.Any, int.Parse(PortBox.Text));
-            listener.Start();
-
-            client = listener.AcceptTcpClient();
-
-            if (client.Connected)
+            mPCreateButton.Enabled = false;
+            mPJoinButton.Enabled = false;
+            try
             {
-                //VÄNTAR PÅ SERVERSKAPARE
-                startGameButton.Enabled = false;
-                playersPanel.Visible = false;
-                ipPanel.Visible = false;
-                customizeShipsPanel.Visible = false;
-                settingsPanel.Visible = false;
-                mainGamePanel.Visible = true;
-
-                //checks if a gameboard has been created earlier
-                if (gameBoxesNotCreated)
+                //sets proper bounds for which ports can be used
+                if (int.Parse(PortBox.Text) < 1024 || int.Parse(PortBox.Text) > 65535)
                 {
-                    createEnemyGameBoxes();
-                    createUserGameBoxes();
-                    gameBoxesNotCreated = false;
+                    throw new ArgumentOutOfRangeException();
                 }
 
-                userType = 2;
+                //listener for the client's stream
+                listener = new TcpListener(IPAddress.Any, int.Parse(PortBox.Text));
+                listener.Start();
+                //client gets identified
+                client = await listener.AcceptTcpClientAsync();
 
-                placementButton.Enabled = true;
+                //once client has connected, changes panels to the game and starts it
+                if (client.Connected)
+                {
+                    //VÄNTAR PÅ SERVERSKAPARE
+                    startGameButton.Enabled = false;
+                    playersPanel.Visible = false;
+                    ipPanel.Visible = false;
+                    mPCreateButton.Enabled = true;
+                    mPJoinButton.Enabled = true;
+                    customizeShipsPanel.Visible = false;
+                    settingsPanel.Visible = false;
+                    mainGamePanel.Visible = true;
+
+                    //checks if a gameboard has been created earlier
+                    if (gameBoxesNotCreated)
+                    {
+                        createEnemyGameBoxes();
+                        createUserGameBoxes();
+                        gameBoxesNotCreated = false;
+                    }
+                    //user type: host
+                    userType = 2;
+
+                    placementButton.Enabled = true;
+                    surrenderButton.Enabled = true;
+                }
             }
-
-            //INFORMATION OM ANSLUTNING
-            //STARTA SPEL + SPELBRÄDE
-            //BÖRJAR SPELA
+            catch(System.FormatException)
+            {
+                //only use integers!
+                MessageBox.Show("You can only use integers in the port box!", "Format exception");
+                mPCreateButton.Enabled = true;
+                mPJoinButton.Enabled = true;
+            }
+            catch(System.ArgumentOutOfRangeException) //+ tal under 1024
+            {
+                //accepted integers from 1024 to 65535
+                MessageBox.Show("Accepted for port integers: 1024 - 65535!", "Numbers out of range");
+                mPCreateButton.Enabled = true;
+                mPJoinButton.Enabled = true;
+            }
         }
-
+        
+        //Starts multiplayer game as client
         private void mPJoinButton_Click(object sender, EventArgs e)
         {
-            //KONTROLLERA OM ÖVER 20000, BARA SIFFROR
-            IPAddress adress = IPAddress.Parse(IPBox.Text);
-            client = new TcpClient();
-            client.NoDelay = true;
-            client.Connect(adress, int.Parse(PortBox.Text));
-
-            if (client.Connected)
+            try
             {
-                //VÄNTAR PÅ SERVERSKAPARE
-                startGameButton.Enabled = false;
-                playersPanel.Visible = false;
-                ipPanel.Visible = false;
-                customizeShipsPanel.Visible = false;
-                settingsPanel.Visible = false;
-                mainGamePanel.Visible = true;
-
-                //checks if a gameboard has been created earlier
-                if (gameBoxesNotCreated)
+                //sets proper bounds for which ports can be used
+                if (int.Parse(PortBox.Text) < 1024 || int.Parse(PortBox.Text) > 65535)
                 {
-                    createEnemyGameBoxes();
-                    createUserGameBoxes();
-                    gameBoxesNotCreated = false;
+                    //there are two equal throw arguments, this is because they can only be handled in the class
+                    throw new ArgumentOutOfRangeException();
                 }
 
-                userType = 3;
+                //Uses the info the user has given and connects (if no errors)
+                IPAddress adress = IPAddress.Parse(IPBox.Text);
+                client = new TcpClient();
+                client.NoDelay = true;
+                client.Connect(adress, int.Parse(PortBox.Text));
 
-                placementButton.Enabled = false;
-
-                if (client.GetStream().ReadByte() > 0)
+                //once client has connected, changes panels to the game and starts it
+                if (client.Connected)
                 {
+                    //VÄNTAR PÅ SERVERSKAPARE
+                    placementButton.Enabled = false;
+                    surrenderButton.Enabled = false;
+                    startGameButton.Enabled = false;
+                    playersPanel.Visible = false;
+                    ipPanel.Visible = false;
+                    customizeShipsPanel.Visible = false;
+                    settingsPanel.Visible = false;
+                    mainGamePanel.Visible = true;
+
+                    //checks if a gameboard has been created earlier
+                    if (gameBoxesNotCreated)
+                    {
+                        createEnemyGameBoxes();
+                        createUserGameBoxes();
+                        gameBoxesNotCreated = false;
+                    }
+                    //user type: client
+                    userType = 3;
+                    //accepts host shipplacements and let's client play
                     mPPlaceShips();
-
-                    //user is able to attack
-                    placementButton.Enabled = true;
                 }
+            }
+            catch(FormatException)
+            {
+                //only use four integers between 0-255 with dots between them e.g: '123.243.236.128'!
+                //only use integers!
+                MessageBox.Show("You can only use integers in the port box and 4 integers (0-255) with dots between them for the IP-Adress!", "Format exception");
+            }
+            catch (System.ArgumentOutOfRangeException) //+ tal under 1024
+            {
+                //accepted integers from 1024 to 65535
+                MessageBox.Show("Accepted for port integers: 1024 - 65535!", "Numbers out of range");
+            }
+            catch (System.Net.Sockets.SocketException)
+            {
+                //could not connect, make sure the server has been created and that you have the correct IP
+                MessageBox.Show("Could not connect, check if server created/you used the correct endpoint", "Connection error");
             }
         }
 
-        //leaves the battleship game back to main menu and resets board
+        //sends message to the enemy that user has surrendered, surrenders
         private void surrenderButton_Click(object sender, EventArgs e)
         {
+            if(userType != 1)
+            {
+                byte[] dataOut = Encoding.UTF8.GetBytes("surrender-gameEnd");
+                client.GetStream().Write(dataOut, 0, dataOut.Length);
+            }
+            surrender();
+        }
+
+        //leaves the battleship game, back to main menu and resets board
+        public void surrender()
+        {
+            //if player isn't in single player
+            if (userType > 1)
+            {
+                if (client.Connected)
+                {
+                    //closes and resets server connection
+                    client.GetStream().Close();
+                    client.Close();
+                }
+                //host has to stop the listener too
+                if (userType == 2)
+                {
+                    listener.Stop();
+                }
+                userType = 0;
+            }
+
             gameBoardReset();
             attackButton.Enabled = false;
             helpButton.Enabled = false;
@@ -889,9 +961,10 @@ namespace BattleShipGame
         //after the user has chosen to attack
         private void attackButton_Click(object sender, EventArgs e)
         {
-            //if an enemy box has been selected, round counter + 1
+            //if an enemy box has been selected
             if(enemyBoxClick)
             {
+                //single player: advance to next round + attack
                 if(userType == 1)
                 {
                     roundCounter++;
@@ -899,17 +972,32 @@ namespace BattleShipGame
 
                     sPAttack();
                 }
+                //host: attack and wait for a counter attack
                 else if(userType == 2)
                 {
                     mPAttack();
+                    u2GetAttackData();
                 }
+                //client: attack, count next round, count ships and check if anybody has won.
                 else
                 {
+                    mPAttack();
+
                     roundCounter++;
                     roundCountLabel.Text = roundCounter.ToString();
-                    //SEND TO HOST
 
-                    mPAttack();
+                    //checks enemy's and user's boards to determine winner
+                    countEnemyShips();
+                    countUserShips();
+                    if (client.Connected)
+                    {
+                        checkWinner(enemyShipsLeft, userShipsLeft);
+                    }
+                    //game/connection hasn't ended await counter attack
+                    if (userType == 3)
+                    {
+                        u3GetAttackData();
+                    }
                 }
             }
             //if no enemy box has been chosen, an error depending on the language shows up
@@ -942,6 +1030,7 @@ namespace BattleShipGame
             }
         }
 
+        //single player attack
         public void sPAttack()
         {
             //USER ATTACK, checks if user has attacked a ship or an empty box. If user attacks a box again it will count as them skipping the round.
@@ -993,6 +1082,7 @@ namespace BattleShipGame
             }
         }
 
+        //multiplayer attack
         public void mPAttack()
         {
             //USER ATTACK, checks if user has attacked a ship or an empty box. If user attacks a box again it will count as them skipping the round.
@@ -1001,44 +1091,61 @@ namespace BattleShipGame
                 //empty box to attacked box, no ship
                 enemyGameBoxList[attackValueY, attackValueX].Text = selectedSprites[1].ToString();
                 enemyBattleField[attackValueY, attackValueX] = 1;
-                //this should only require one byte in comparison to 4 for an integer, minimum load on the internet and the computer only has to convert
-                byte[] dataOut = Encoding.UTF8.GetBytes("1");
-                client.GetStream().Write(dataOut, 0, dataOut.Length);
+                //sends attack data to enemy (last digit is what value the box should get)
+                //this should only require one byte in comparison to 4 for an integer, minimum load on the internet only the computer has to convert it
+                try
+                {
+                    byte[] dataOut = Encoding.UTF8.GetBytes(attackValueY + "" + attackValueX + "1");
+                    client.GetStream().Write(dataOut, 0, dataOut.Length);
+                }
+                catch(Exception)
+                {
+                    //network error, communication closed beforehand
+                    MessageBox.Show("Your connection with the oponent has encountered an error, leaving game", "Connection error");
+                    surrender();
+                }
             }
             else if (enemyBattleField[attackValueY, attackValueX] == 2)
             {
                 //ship box to attacked ship box
                 enemyGameBoxList[attackValueY, attackValueX].Text = selectedSprites[3].ToString();
                 enemyBattleField[attackValueY, attackValueX] = 3;
-                //this should only require one byte in comparison to 4 for an integer, minimum load on the internet and the computer only has to convert
-                //on the other person's board, their ship is crashed. thus 5.
-                byte[] dataOut = Encoding.UTF8.GetBytes("5");
-                client.GetStream().Write(dataOut, 0, dataOut.Length);
+                /*sends attack data to enemy (last digit is what value the box should get)
+                this should only require one byte in comparison to 4 for an integer, minimum load on the internet and the computer only has to convert
+                on the other person's board, their ship is sunk. thus last digit is 5.*/
+                try
+                {
+                    byte[] dataOut = Encoding.UTF8.GetBytes(attackValueY + "" + attackValueX + "5");
+                    client.GetStream().Write(dataOut, 0, dataOut.Length);
+                }
+                catch (Exception)
+                {
+                    //network error, communication closed beforehand
+                    MessageBox.Show("Your connection with the oponent has encountered an error, leaving game", "Connection error");
+                    surrender();
+                }
             }
             else
             {
-                //0 bytes, nothing is technically sent
-                client.GetStream().Write(null, 0, 0);
+                //sends "0", will count as nothing and attack counts as skipped
+                try
+                {
+                    byte[] dataOut = Encoding.UTF8.GetBytes("0");
+                    client.GetStream().Write(dataOut, 0, dataOut.Length);
+                }
+                catch (Exception)
+                {
+                    //network error, communication closed beforehand
+                    MessageBox.Show("Your connection with the oponent has encountered an error, leaving game", "Connection error");
+                    surrender();
+                }
             }
-
+            //user's turn is over, resets attack values so they won't accidentally attack the same box
             attackButton.Enabled = false;
-
-            byte[] dataIn = new byte[256];
-            int totalBytes = client.GetStream().Read(dataIn, 0, dataIn.Length);
-            String textIn = Encoding.UTF8.GetString(dataIn, 0, totalBytes);
-            Console.WriteLine(textIn);
-
-            if (totalBytes > 0)
-            {
-                userGameBoxList[attackValueY, attackValueX].Text = selectedSprites[int.Parse(textIn)].ToString();
-                userBattleField[attackValueY, attackValueX] = int.Parse(textIn);
-            }
-            else
-            {
-
-            }
-
-            attackButton.Enabled = true;
+            surrenderButton.Enabled = false;
+            enemyBoxClick = false;
+            xCoordTextBox.Text = null;
+            yCoordTextBox.Text = null;
         }
 
         //counts how many ships the enemy has left, outprints them on the enemy ship counter label
@@ -1077,141 +1184,170 @@ namespace BattleShipGame
         //checks if the game has ended
         public void checkWinner(int enemyShipsLeft, int userShipsLeft)
         {
-            //checks if both enemy and user have no ships left
-            if (enemyShipsLeft == 0 && userShipsLeft == 0)
-            {
-                //displays message for draw
-                for (int i = 0; i < languageList.Length; i++)
+                //checks if both enemy and user have no ships left
+                if (enemyShipsLeft == 0 && userShipsLeft == 0)
                 {
-                    if (languageList[i])
+                    //closes and resets server connection
+                    client.GetStream().Close();
+                    client.Close();
+                    //listener needs to be closed for host
+                    if (userType == 2)
                     {
-                        switch (i)
+                        listener.Stop();
+                    }
+                    //resets user type
+                    userType = 0;
+                    //displays message for draw
+                    for (int i = 0; i < languageList.Length; i++)
+                    {
+                        if (languageList[i])
                         {
-                            case 0:
-                                MessageBox.Show("The enemy and you have no ships left, you have tied", "Draw");
-                                break;
+                            switch (i)
+                            {
+                                case 0:
+                                    MessageBox.Show("The enemy and you have no ships left, you have tied", "Draw");
+                                    break;
 
-                            case 1:
-                                MessageBox.Show("Både fienden och du har inga skepp kvar, oavgjort", "Oavgjort");
-                                break;
+                                case 1:
+                                    MessageBox.Show("Både fienden och du har inga skepp kvar, oavgjort", "Oavgjort");
+                                    break;
 
-                            case 2:
-                                MessageBox.Show("L'ennemi et toi n'ont pas des navires restants, c'est une égalité", "Égalité");
-                                break;
+                                case 2:
+                                    MessageBox.Show("L'ennemi et toi n'ont pas des navires restants, c'est une égalité", "Égalité");
+                                    break;
 
-                            case 3:
-                                MessageBox.Show("沒有任何剩的船，你和敵人平局了", "平局");
-                                break;
+                                case 3:
+                                    MessageBox.Show("沒有任何剩的船，你和敵人平局了", "平局");
+                                    break;
+                            }
                         }
                     }
+                    //resets game and returns to menu
+                    gameBoardReset();
+                    attackButton.Enabled = false;
+                    helpButton.Enabled = false;
+                    mainGamePanel.Visible = false;
+                    startGameButton.Enabled = true;
                 }
-                //resets game and returns to menu
-                gameBoardReset();
-                attackButton.Enabled = false;
-                helpButton.Enabled = false;
-                mainGamePanel.Visible = false;
-                startGameButton.Enabled = true;
-            }
 
-            //checks if no enemy ships left
-            else if (enemyShipsLeft == 0)
-            {
-                //displays message for victory
-                for (int i = 0; i < languageList.Length; i++)
+                //checks if no enemy ships left
+                else if (enemyShipsLeft == 0)
                 {
-                    if (languageList[i])
+                    //closes and resets server connection
+                    client.GetStream().Close();
+                    client.Close();
+                    if (userType == 2)
                     {
-                        switch (i)
+                        listener.Stop();
+                    }
+                    userType = 0;
+                    //displays message for victory
+                    for (int i = 0; i < languageList.Length; i++)
+                    {
+                        if (languageList[i])
                         {
-                            case 0:
-                                MessageBox.Show("The enemy has no ships left, you have won", "Victory");
-                                break;
+                            switch (i)
+                            {
+                                case 0:
+                                    MessageBox.Show("The enemy has no ships left, you have won", "Victory");
+                                    break;
 
-                            case 1:
-                                MessageBox.Show("Fienden har inga skepp kvar, du har vunnit", "Seger");
-                                break;
+                                case 1:
+                                    MessageBox.Show("Fienden har inga skepp kvar, du har vunnit", "Seger");
+                                    break;
 
-                            case 2:
-                                MessageBox.Show("L'ennemi n'a pas des navires restants, vous avez gagné", "Victoire");
-                                break;
+                                case 2:
+                                    MessageBox.Show("L'ennemi n'a pas des navires restants, vous avez gagné", "Victoire");
+                                    break;
 
-                            case 3:
-                                MessageBox.Show("敵人沒有剩的船，你勝利了", "勝利");
-                                break;
+                                case 3:
+                                    MessageBox.Show("敵人沒有剩的船，你勝利了", "勝利");
+                                    break;
+                            }
                         }
                     }
+                    //resets game and returns to menu
+                    gameBoardReset();
+                    attackButton.Enabled = false;
+                    helpButton.Enabled = false;
+                    mainGamePanel.Visible = false;
+                    startGameButton.Enabled = true;
                 }
-                //resets game and returns to menu
-                gameBoardReset();
-                attackButton.Enabled = false;
-                helpButton.Enabled = false;
-                mainGamePanel.Visible = false;
-                startGameButton.Enabled = true;
-            }
 
-            //checks if no user ships left
-            else if (userShipsLeft == 0)
-            {
-                //displays message for defeat
-                for (int i = 0; i < languageList.Length; i++)
+                //checks if no user ships left
+                else if (userShipsLeft == 0)
                 {
-                    if (languageList[i])
+                    //closes and resets server connection
+                    client.GetStream().Close();
+                    client.Close();
+                    if (userType == 2)
                     {
-                        switch (i)
+                        listener.Stop();
+                    }
+                    userType = 0;
+                    //displays message for defeat
+                    for (int i = 0; i < languageList.Length; i++)
+                    {
+                        if (languageList[i])
                         {
-                            case 0:
-                                MessageBox.Show("You have no ships left, you have lost", "Defeat");
-                                break;
+                            switch (i)
+                            {
+                                case 0:
+                                    MessageBox.Show("You have no ships left, you have lost", "Defeat");
+                                    break;
 
-                            case 1:
-                                MessageBox.Show("Du har inga skepp kvar, du har förlorat", "Förlust");
-                                break;
+                                case 1:
+                                    MessageBox.Show("Du har inga skepp kvar, du har förlorat", "Förlust");
+                                    break;
 
-                            case 2:
-                                MessageBox.Show("Vous n'avez pas des navires restants, vous avez perdu", "Défaite");
-                                break;
+                                case 2:
+                                    MessageBox.Show("Vous n'avez pas des navires restants, vous avez perdu", "Défaite");
+                                    break;
 
-                            case 3:
-                                MessageBox.Show("你沒有剩的船，你失敗了", "失敗");
-                                break;
+                                case 3:
+                                    MessageBox.Show("你沒有剩的船，你失敗了", "失敗");
+                                    break;
+                            }
                         }
                     }
+                    //resets game and returns to menu
+                    gameBoardReset();
+                    attackButton.Enabled = false;
+                    helpButton.Enabled = false;
+                    mainGamePanel.Visible = false;
+                    startGameButton.Enabled = true;
                 }
-                //resets game and returns to menu
-                gameBoardReset();
-                attackButton.Enabled = false;
-                helpButton.Enabled = false;
-                mainGamePanel.Visible = false;
-                startGameButton.Enabled = true;
-            }
         }
 
         //when user confirms ship placements
         private void placementButton_Click(object sender, EventArgs e)
         {
-            //checks enemy's and user's boards
-            //IF SINGLE/CLIENT
-            if(userType == 1 || userType == 3)
+            //IF SINGLEPLAYER
+            if(userType == 1)
             {
+                //checks enemy's and user's boards
                 countEnemyShips();
                 countUserShips();
-                if(userType == 3)
-                {
-                    //SEND YOUR COUNT TO HOST
-                }
             }
-            //IF HOST
+            //IF MULTIPLAYER
             else
             {
                 countUserShips();
+                //counts enemy ships later, as they need to be placed and sent first
             }
-
 
             //userboard must have 1 - 18 ships, disables this method and changes the color of the boxes who have user ships
             if (userShipsLeft >= 1 && userShipsLeft <= 18)
             {
                 placementButton.Enabled = false;
-                String placementText = null;
+                //multiplayer should not be able to surrender when it's not their turn
+                if (userType != 1)
+                {
+                    surrenderButton.Enabled = false;
+                }
+
+                //Text that will contain information about ship placements, waits for all ships to be checked
+                placementText = null;
 
                 for (int i = 0; i < 10; i++)
                 {
@@ -1222,66 +1358,62 @@ namespace BattleShipGame
                             userGameBoxList[i, j].ForeColor = Color.FromArgb(userShipColor);
                             if (placementText == null)
                             {
+                                //due to an error, the first character disappears and information about the problem is insufficient for a good solution to the problem
+                                //simplest correction: x always disappears and the rest is sent
                                 placementText = "x" + i + "" + j + " ";
                             }
                             else
                             {
                                 placementText = placementText + i + "" + j + " ";
                             }
-                            //skicka detta till andra spelaren
-                            //de väntar på alla rutor och skriver in dem
                         }
                     }
                 }
-                //SINGLE PLAYER
+                //SINGLE PLAYER, can attack
                 if (userType == 1)
                 {
                     attackButton.Enabled = true;
                     helpButton.Enabled = true;
                 }
-                //ONLY ACTIVE WHEN YOUR TURN, MULTIPLAYER
+                //MULTIPLAYER, put into waiting mode
                 else
                 {
                     placementButton.Enabled = false;
+                    surrenderButton.Enabled = false;
                     //HOST
                     if (userType == 2)
                     {
-                        //send ships
-                        byte[] dataOut = Encoding.UTF8.GetBytes(placementText);
-                        client.GetStream().Write(dataOut, 0, dataOut.Length);
-
-                        //invänta klient
-                        //börja attackera
-                        if (client.GetStream().ReadByte() > 0)
+                        //send ship placements to enemy and wait for them to send placements back
+                        try
                         {
+                            byte[] dataOut = Encoding.UTF8.GetBytes(placementText);
+                            client.GetStream().Write(dataOut, 0, dataOut.Length);
+
                             mPPlaceShips();
-                            countEnemyShips();
-                            attackButton.Enabled = true;
+                        }
+                        catch (Exception)
+                        {
+                            MessageBox.Show("Your connection with the oponent has encountered an error, leaving game", "Connection error");
+                            surrender();
                         }
                     }
+                    //CLIENT
                     else
                     {
-                        //send ships
-                        byte[] dataOut = Encoding.UTF8.GetBytes(placementText);
-                        client.GetStream().Write(dataOut, 0, dataOut.Length);
-
-                        //get attacked box and play
-                        byte[] dataIn = new byte[256];
-                        int totalBytes = client.GetStream().Read(dataIn, 0, dataIn.Length);
-                        String textIn = Encoding.UTF8.GetString(dataIn, 0, totalBytes);
-                        Console.WriteLine(textIn);
-
-                        if (totalBytes > 0)
+                        try
                         {
-                            userGameBoxList[attackValueY, attackValueX].Text = selectedSprites[int.Parse(textIn)].ToString();
-                            userBattleField[attackValueY, attackValueX] = int.Parse(textIn);
-                        }
-                        else
-                        {
+                            //send ship placements to enemy
+                            byte[] dataOut = Encoding.UTF8.GetBytes(placementText);
+                            client.GetStream().Write(dataOut, 0, dataOut.Length);
 
+                            //wait for enemy to attack a box, wait to get which box enemy has attacked
+                            u3GetAttackData();
                         }
-                        //user is able to attack
-                        attackButton.Enabled = true;
+                        catch (Exception)
+                        {
+                            MessageBox.Show("Your connection with the oponent has encountered an error, leaving game", "Connection error");
+                            surrender();
+                        }
                     }
                 }
             }
@@ -1353,24 +1485,160 @@ namespace BattleShipGame
         }
 
         //multiplayer method for ship placement
-        private void mPPlaceShips()
+        async private void mPPlaceShips()
         {
-            byte[] dataIn = new byte[256];
-            int totalBytes = client.GetStream().Read(dataIn, 0, dataIn.Length);
-            String textIn = Encoding.UTF8.GetString(dataIn, 0, totalBytes);
-            Console.WriteLine(textIn);
-
-            for (int i = 0; i < textIn.Length - 1; i++)
+            try
             {
-                if (Char.IsDigit(textIn[i]) && Char.IsDigit(textIn[i + 1]))
+                //receives data from enemy (either ship placements or if they have surrendered)
+                byte[] dataIn = new byte[256];
+                int totalBytes = await client.GetStream().ReadAsync(dataIn, 0, dataIn.Length);
+                String textIn = Encoding.UTF8.GetString(dataIn, 0, totalBytes);
+                Console.WriteLine(textIn);
+                
+                //if enemy hasn't surrendered, the data will be analyzed
+                if (textIn != "surrender-gameEnd")
                 {
-                    enemyBattleField[(textIn[i] - 48), (textIn[i + 1] - 48)] = 2;
-                    Console.WriteLine("" + (textIn[i] - 48) + "" + (textIn[i + 1] - 48) + " ");
+                    //i needs to be < .length - 1 because it will check i+1
+                    for (int i = 0; i < textIn.Length - 1; i++)
+                    {
+                        //if there are two digits in a row, proceeds to place enemy ship on the coordinates
+                        if (Char.IsDigit(textIn[i]) && Char.IsDigit(textIn[i + 1]))
+                        {
+                            enemyBattleField[(textIn[i] - 48), (textIn[i + 1] - 48)] = 2;
+                            Console.WriteLine("" + (textIn[i] - 48) + "" + (textIn[i + 1] - 48) + " ");
+                        }
+                    }
+
+                    //fixes enemy color and ship count
+                    translateEnemyBoxes();
+                    countEnemyShips();
+
+                    //once placements have been sent back, client can place ships, host can attack
+                    if (userType == 2)
+                    {
+                        attackButton.Enabled = true;
+                        surrenderButton.Enabled = true;
+                    }
+                    else
+                    {
+                        placementButton.Enabled = true;
+                        surrenderButton.Enabled = true;
+                    }
+                }
+                else
+                {
+                    //enemy has surrendered
+                    MessageBox.Show("Your opponent has surrendered, leaving game", "Victory");
+                    //ends game
+                    surrender();
                 }
             }
+            catch (Exception)
+            {
+                //network error
+                MessageBox.Show("Your connection with the oponent has encountered an error, leaving game", "Connection error");
+                surrender();
+            }
+        }
 
-            //fix enemy color
-            translateEnemyBoxes();
+        //Host gets information about which box of theirs that has been attacked
+        async public void u2GetAttackData()
+        {
+            try
+            {
+                //receives data from enemy (either attack on box or if they have surrendered)
+                byte[] dataIn = new byte[256];
+                int totalBytes = await client.GetStream().ReadAsync(dataIn, 0, dataIn.Length);
+                String textIn = Encoding.UTF8.GetString(dataIn, 0, totalBytes);
+                Console.WriteLine(textIn);
+
+                //if a new box has been attacked, change box value and character
+                if (textIn != "surrender-gameEnd")
+                {
+                    if (textIn != "0")
+                    {
+                        userGameBoxList[textIn[0] - 48, textIn[1] - 48].Text = selectedSprites[textIn[2] - 48].ToString();
+                        userBattleField[textIn[0] - 48, textIn[1] - 48] = textIn[2] - 48;
+                    }
+                    else
+                    {
+                        //enemy has skipped a round
+                    }
+
+                    //next round starts (Host always begins)
+                    roundCounter++;
+                    roundCountLabel.Text = roundCounter.ToString();
+
+                    //checks enemy's and user's boards to determine winner
+                    countEnemyShips();
+                    countUserShips();
+                    if(client.Connected)
+                    {
+                        checkWinner(enemyShipsLeft, userShipsLeft);
+                    }
+                    //if game is still going, continue playing
+                    if (userType == 2)
+                    {
+                        attackButton.Enabled = true;
+                        surrenderButton.Enabled = true;
+                    }
+                }
+                else
+                {
+                    //enemy has surrendered
+                    MessageBox.Show("Your opponent has surrendered, leaving game", "Victory");
+                    surrender();
+                }
+            }
+            catch (Exception)
+            {
+                //network error
+                MessageBox.Show("Your connection with the oponent has encountered an error, leaving game", "Connection error");
+                surrender();
+            }
+        }
+
+        //Client gets information about which box of theirs that has been attacked
+        async public void u3GetAttackData()
+        {
+            try
+            {
+                //receives data from enemy (either attack on box or if they have surrendered)
+                byte[] dataIn = new byte[256];
+                int totalBytes = await client.GetStream().ReadAsync(dataIn, 0, dataIn.Length);
+                String textIn = Encoding.UTF8.GetString(dataIn, 0, totalBytes);
+                Console.WriteLine(textIn);
+
+                //if a new box has been attacked, change box value and character
+                if (textIn != "surrender-gameEnd")
+                {
+                    if (textIn != "0")
+                    {
+                        userGameBoxList[textIn[0] - 48, textIn[1] - 48].Text = selectedSprites[textIn[2] - 48].ToString();
+                        userBattleField[textIn[0] - 48, textIn[1] - 48] = textIn[2] - 48;
+                    }
+                    else
+                    {
+                        //enemy has skipped a round
+                    }
+
+                    //client's turn
+                    attackButton.Enabled = true;
+                    surrenderButton.Enabled = true;
+                }
+                else
+                {
+                    //enemy has surrendered
+                    MessageBox.Show("Your opponent has surrendered, leaving game", "Victory");
+                    surrender();
+                }
+            }
+            catch (Exception)
+            {
+                //network error
+                MessageBox.Show("Your connection with the oponent has encountered an error, leaving game", "Connection error");
+                surrender();
+            }
         }
 
         //lets the user reveal randomized enemy ship
@@ -3776,6 +4044,7 @@ namespace BattleShipGame
                 }
             }
         }
+
         private void userGameBox97_Click(object sender, EventArgs e)
         {
             if (placementButton.Enabled)
