@@ -114,25 +114,25 @@ namespace BattleShipGame
                 {
                     //the four different interface languages
                     case "rButtonEnglish":
-                        setEnglish();
+                        SetEnglish();
                         break;
 
                     case "rButtonSwedish":
-                        setSwedish();
+                        SetSwedish();
                         break;
 
                     case "rButtonFrench":
-                        setFrench();
+                        SetFrench();
                         break;
 
                     case "rButtonMandarin":
-                        setMandarin();
+                        SetMandarin();
                         break;
                 }
             }
         }
         //changes all text to English
-        public void setEnglish()
+        public void SetEnglish()
         {
             yLanguageButton.Text = "Confirm";
             languageLabel.Text = "Select language";
@@ -171,7 +171,7 @@ namespace BattleShipGame
             languageList[0] = true;
         }
         //changes all text to Swedish
-        public void setSwedish()
+        public void SetSwedish()
         {
             yLanguageButton.Text = "Bekräfta";
             languageLabel.Text = "Välj språk";
@@ -208,7 +208,7 @@ namespace BattleShipGame
             languageList[1] = true;
         }
         //changes all text to French
-        public void setFrench()
+        public void SetFrench()
         {
             yLanguageButton.Text = "Confirmer";
             languageLabel.Text = "Choisir la langue";
@@ -245,7 +245,7 @@ namespace BattleShipGame
             languageList[2] = true;
         }
         //changes all text to Mandarin
-        public void setMandarin()
+        public void SetMandarin()
         {
             yLanguageButton.Text = "對";
             languageLabel.Text = "對不起，我不會中文，選擇別語言";
@@ -394,18 +394,18 @@ namespace BattleShipGame
             settingsPanel.Visible = false;
             mainGamePanel.Visible = true;
 
-            randomizeShipPlacement();
+            RandomizeShipPlacement();
 
             //checks if a gameboard has been created earlier
             if (gameBoxesNotCreated)
             {
-                createEnemyGameBoxes();
-                createUserGameBoxes();
+                CreateEnemyGameBoxes();
+                CreateUserGameBoxes();
                 gameBoxesNotCreated = false;
             }
             else
             {
-                translateEnemyBoxes();
+                TranslateEnemyBoxes();
             }
 
             //sets user type to single player
@@ -456,8 +456,8 @@ namespace BattleShipGame
                     //checks if a gameboard has been created earlier
                     if (gameBoxesNotCreated)
                     {
-                        createEnemyGameBoxes();
-                        createUserGameBoxes();
+                        CreateEnemyGameBoxes();
+                        CreateUserGameBoxes();
                         gameBoxesNotCreated = false;
                     }
                     //user type: host
@@ -517,14 +517,14 @@ namespace BattleShipGame
                     //checks if a gameboard has been created earlier
                     if (gameBoxesNotCreated)
                     {
-                        createEnemyGameBoxes();
-                        createUserGameBoxes();
+                        CreateEnemyGameBoxes();
+                        CreateUserGameBoxes();
                         gameBoxesNotCreated = false;
                     }
                     //user type: client
                     userType = 3;
                     //accepts host shipplacements and let's client play
-                    mPPlaceShips();
+                    MPPlaceShips();
                 }
             }
             catch(FormatException)
@@ -553,11 +553,11 @@ namespace BattleShipGame
                 byte[] dataOut = Encoding.UTF8.GetBytes("surrender-gameEnd");
                 client.GetStream().Write(dataOut, 0, dataOut.Length);
             }
-            surrender();
+            Surrender();
         }
 
         //leaves the battleship game, back to main menu and resets board
-        public void surrender()
+        public void Surrender()
         {
             //if player isn't in single player
             if (userType > 1)
@@ -576,7 +576,7 @@ namespace BattleShipGame
                 userType = 0;
             }
 
-            gameBoardReset();
+            GameBoardReset();
             attackButton.Enabled = false;
             helpButton.Enabled = false;
             mainGamePanel.Visible = false;
@@ -584,7 +584,7 @@ namespace BattleShipGame
         }
 
         //places random enemy ships
-        public void randomizeShipPlacement()
+        public void RandomizeShipPlacement()
         {
             shipCounter = 0;
 
@@ -649,7 +649,7 @@ namespace BattleShipGame
         }
 
         //visually creates the enemy gameboard, sets up textboxes
-        public void createEnemyGameBoxes()
+        public void CreateEnemyGameBoxes()
         {
             //positioning and counter for which textbox is being placed
             int gameBoxYPos = 0;
@@ -792,7 +792,7 @@ namespace BattleShipGame
             enemyGameBoxList[9, 9].Click += new EventHandler(enemyGameBox100_Click);
         }
         //visually creates the user gameboard, same as the description for createEnemyGameBoxes()
-        public void createUserGameBoxes()
+        public void CreateUserGameBoxes()
         {
             int gameBoxYPos = 0;
             int gameBoxCounter = 0;
@@ -919,7 +919,7 @@ namespace BattleShipGame
         }
 
         //visually translates the randomized board to the game boxes
-        public void translateEnemyBoxes()
+        public void TranslateEnemyBoxes()
         {
             for (int i = 0; i < 10; i++)
             {
@@ -940,7 +940,7 @@ namespace BattleShipGame
             }
         }
         //removes characters, colors and ship placements of all boxes and resets round counter
-        public void gameBoardReset()
+        public void GameBoardReset()
         {
             for (int i = 0; i < 10; i++)
             {
@@ -970,33 +970,33 @@ namespace BattleShipGame
                     roundCounter++;
                     roundCountLabel.Text = roundCounter.ToString();
 
-                    sPAttack();
+                    SPAttack();
                 }
                 //host: attack and wait for a counter attack
                 else if(userType == 2)
                 {
-                    mPAttack();
-                    u2GetAttackData();
+                    MPAttack();
+                    U2GetAttackData();
                 }
                 //client: attack, count next round, count ships and check if anybody has won.
                 else
                 {
-                    mPAttack();
+                    MPAttack();
 
                     roundCounter++;
                     roundCountLabel.Text = roundCounter.ToString();
 
                     //checks enemy's and user's boards to determine winner
-                    countEnemyShips();
-                    countUserShips();
+                    CountEnemyShips();
+                    CountUserShips();
                     if (client.Connected)
                     {
-                        checkWinner(enemyShipsLeft, userShipsLeft);
+                        CheckWinner(enemyShipsLeft, userShipsLeft);
                     }
                     //game/connection hasn't ended await counter attack
                     if (userType == 3)
                     {
-                        u3GetAttackData();
+                        U3GetAttackData();
                     }
                 }
             }
@@ -1031,7 +1031,7 @@ namespace BattleShipGame
         }
 
         //single player attack
-        public void sPAttack()
+        public void SPAttack()
         {
             //USER ATTACK, checks if user has attacked a ship or an empty box. If user attacks a box again it will count as them skipping the round.
             if (enemyBattleField[attackValueY, attackValueX] == 0)
@@ -1063,8 +1063,8 @@ namespace BattleShipGame
                     yCoordTextBox.Text = null;
 
                     //checks enemy's and user's boards to determine winner
-                    countUserShips();
-                    checkWinner(enemyShipsLeft, userShipsLeft);
+                    CountUserShips();
+                    CheckWinner(enemyShipsLeft, userShipsLeft);
                 }
                 //box with ship
                 else if (userBattleField[randomY, randomX] == 4)
@@ -1075,15 +1075,15 @@ namespace BattleShipGame
                     enemyBoxClick = false;
 
                     //checks enemy's and user's boards to determine winner
-                    countEnemyShips();
-                    countUserShips();
-                    checkWinner(enemyShipsLeft, userShipsLeft);
+                    CountEnemyShips();
+                    CountUserShips();
+                    CheckWinner(enemyShipsLeft, userShipsLeft);
                 }
             }
         }
 
         //multiplayer attack
-        public void mPAttack()
+        public void MPAttack()
         {
             //USER ATTACK, checks if user has attacked a ship or an empty box. If user attacks a box again it will count as them skipping the round.
             if (enemyBattleField[attackValueY, attackValueX] == 0)
@@ -1102,7 +1102,7 @@ namespace BattleShipGame
                 {
                     //network error, communication closed beforehand
                     MessageBox.Show("Your connection with the oponent has encountered an error, leaving game", "Connection error");
-                    surrender();
+                    Surrender();
                 }
             }
             else if (enemyBattleField[attackValueY, attackValueX] == 2)
@@ -1122,7 +1122,7 @@ namespace BattleShipGame
                 {
                     //network error, communication closed beforehand
                     MessageBox.Show("Your connection with the oponent has encountered an error, leaving game", "Connection error");
-                    surrender();
+                    Surrender();
                 }
             }
             else
@@ -1137,7 +1137,7 @@ namespace BattleShipGame
                 {
                     //network error, communication closed beforehand
                     MessageBox.Show("Your connection with the oponent has encountered an error, leaving game", "Connection error");
-                    surrender();
+                    Surrender();
                 }
             }
             //user's turn is over, resets attack values so they won't accidentally attack the same box
@@ -1149,7 +1149,7 @@ namespace BattleShipGame
         }
 
         //counts how many ships the enemy has left, outprints them on the enemy ship counter label
-        public void countEnemyShips()
+        public void CountEnemyShips()
         {
             enemyShipsLeft = 0;
             for (int i = 0; i < 10; i++)
@@ -1165,7 +1165,7 @@ namespace BattleShipGame
             enemyShipsLeftCountLabel.Text = enemyShipsLeft.ToString();
         }
         //counts how many ships the user has left, outprints them on the user ship counter label
-        public void countUserShips()
+        public void CountUserShips()
         {
             userShipsLeft = 0;
             for (int i = 0; i < 10; i++)
@@ -1182,7 +1182,7 @@ namespace BattleShipGame
         }
 
         //checks if the game has ended
-        public void checkWinner(int enemyShipsLeft, int userShipsLeft)
+        public void CheckWinner(int enemyShipsLeft, int userShipsLeft)
         {
                 //checks if both enemy and user have no ships left
                 if (enemyShipsLeft == 0 && userShipsLeft == 0)
@@ -1223,7 +1223,7 @@ namespace BattleShipGame
                         }
                     }
                     //resets game and returns to menu
-                    gameBoardReset();
+                    GameBoardReset();
                     attackButton.Enabled = false;
                     helpButton.Enabled = false;
                     mainGamePanel.Visible = false;
@@ -1267,7 +1267,7 @@ namespace BattleShipGame
                         }
                     }
                     //resets game and returns to menu
-                    gameBoardReset();
+                    GameBoardReset();
                     attackButton.Enabled = false;
                     helpButton.Enabled = false;
                     mainGamePanel.Visible = false;
@@ -1311,7 +1311,7 @@ namespace BattleShipGame
                         }
                     }
                     //resets game and returns to menu
-                    gameBoardReset();
+                    GameBoardReset();
                     attackButton.Enabled = false;
                     helpButton.Enabled = false;
                     mainGamePanel.Visible = false;
@@ -1326,13 +1326,13 @@ namespace BattleShipGame
             if(userType == 1)
             {
                 //checks enemy's and user's boards
-                countEnemyShips();
-                countUserShips();
+                CountEnemyShips();
+                CountUserShips();
             }
             //IF MULTIPLAYER
             else
             {
-                countUserShips();
+                CountUserShips();
                 //counts enemy ships later, as they need to be placed and sent first
             }
 
@@ -1389,12 +1389,12 @@ namespace BattleShipGame
                             byte[] dataOut = Encoding.UTF8.GetBytes(placementText);
                             client.GetStream().Write(dataOut, 0, dataOut.Length);
 
-                            mPPlaceShips();
+                            MPPlaceShips();
                         }
                         catch (Exception)
                         {
                             MessageBox.Show("Your connection with the oponent has encountered an error, leaving game", "Connection error");
-                            surrender();
+                            Surrender();
                         }
                     }
                     //CLIENT
@@ -1407,12 +1407,12 @@ namespace BattleShipGame
                             client.GetStream().Write(dataOut, 0, dataOut.Length);
 
                             //wait for enemy to attack a box, wait to get which box enemy has attacked
-                            u3GetAttackData();
+                            U3GetAttackData();
                         }
                         catch (Exception)
                         {
                             MessageBox.Show("Your connection with the oponent has encountered an error, leaving game", "Connection error");
-                            surrender();
+                            Surrender();
                         }
                     }
                 }
@@ -1485,7 +1485,7 @@ namespace BattleShipGame
         }
 
         //multiplayer method for ship placement
-        async private void mPPlaceShips()
+        async public void MPPlaceShips()
         {
             try
             {
@@ -1510,8 +1510,8 @@ namespace BattleShipGame
                     }
 
                     //fixes enemy color and ship count
-                    translateEnemyBoxes();
-                    countEnemyShips();
+                    TranslateEnemyBoxes();
+                    CountEnemyShips();
 
                     //once placements have been sent back, client can place ships, host can attack
                     if (userType == 2)
@@ -1530,19 +1530,19 @@ namespace BattleShipGame
                     //enemy has surrendered
                     MessageBox.Show("Your opponent has surrendered, leaving game", "Victory");
                     //ends game
-                    surrender();
+                    Surrender();
                 }
             }
             catch (Exception)
             {
                 //network error
                 MessageBox.Show("Your connection with the oponent has encountered an error, leaving game", "Connection error");
-                surrender();
+                Surrender();
             }
         }
 
         //Host gets information about which box of theirs that has been attacked
-        async public void u2GetAttackData()
+        async public void U2GetAttackData()
         {
             try
             {
@@ -1570,11 +1570,11 @@ namespace BattleShipGame
                     roundCountLabel.Text = roundCounter.ToString();
 
                     //checks enemy's and user's boards to determine winner
-                    countEnemyShips();
-                    countUserShips();
+                    CountEnemyShips();
+                    CountUserShips();
                     if(client.Connected)
                     {
-                        checkWinner(enemyShipsLeft, userShipsLeft);
+                        CheckWinner(enemyShipsLeft, userShipsLeft);
                     }
                     //if game is still going, continue playing
                     if (userType == 2)
@@ -1587,19 +1587,19 @@ namespace BattleShipGame
                 {
                     //enemy has surrendered
                     MessageBox.Show("Your opponent has surrendered, leaving game", "Victory");
-                    surrender();
+                    Surrender();
                 }
             }
             catch (Exception)
             {
                 //network error
                 MessageBox.Show("Your connection with the oponent has encountered an error, leaving game", "Connection error");
-                surrender();
+                Surrender();
             }
         }
 
         //Client gets information about which box of theirs that has been attacked
-        async public void u3GetAttackData()
+        async public void U3GetAttackData()
         {
             try
             {
@@ -1630,14 +1630,14 @@ namespace BattleShipGame
                 {
                     //enemy has surrendered
                     MessageBox.Show("Your opponent has surrendered, leaving game", "Victory");
-                    surrender();
+                    Surrender();
                 }
             }
             catch (Exception)
             {
                 //network error
                 MessageBox.Show("Your connection with the oponent has encountered an error, leaving game", "Connection error");
-                surrender();
+                Surrender();
             }
         }
 
